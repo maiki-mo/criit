@@ -5,6 +5,8 @@ export default ( {
     value,
     icon,
     size,
+    refProp,
+    continarStyles,
 } ) => {
     const localStyles = {
         container: {
@@ -12,12 +14,18 @@ export default ( {
             height: `${size}vw`,
             width: `${size}vw`,
             border: 'none',
+            ...continarStyles,
         },
     };
 
     return (
-        <button type="button" style={localStyles.container} onClick={onClick}>
+        <nav
+            type="button"
+            style={localStyles.container}
+            onClick={onClick}
+            ref={refProp}
+        >
             <img src={icon} alt={value} />
-        </button>
+        </nav>
     );
 };
