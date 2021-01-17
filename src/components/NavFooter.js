@@ -17,7 +17,7 @@ export default ( { containerStyles } ) => {
             bottom: 0,
             left: 0,
             width: '100vw',
-            height: '9%',
+            height: '10%',
             backgroundColor: '#A7B7C3',
             zIndex: 1000,
             ...containerStyles,
