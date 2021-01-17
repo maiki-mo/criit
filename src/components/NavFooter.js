@@ -1,5 +1,6 @@
 /* eslint-disable no-param-reassign */
 import React, { useRef } from 'react';
+import { useHistory } from 'react-router-dom';
 
 import NavButton from './NavButton';
 
@@ -9,6 +10,7 @@ import images from '../constants/images';
 const { flex } = styles;
 
 export default ( { containerStyles } ) => {
+    const history = useHistory();
     const localStyles = {
         container: {
             ...flex.centerFlexRow,
@@ -28,16 +30,20 @@ export default ( { containerStyles } ) => {
     const workoutRef = useRef( null );
     const userRef = useRef( null );
 
-    const handlePress = ( { ref } ) => {
+    const handlePress = ( { ref, path } ) => {
         ref.current.style.opacity = 0.4;
         setTimeout( () => {
             ref.current.style.opacity = 1;
         }, 200 );
+
+        console.log( history );
+
+        history.push( path );
     };
 
-    const handleSettingsClick = () => handlePress( { ref: settingsRef } );
-    const handleWorkoutClick = () => handlePress( { ref: workoutRef } );
-    const handleUsersClick = () => handlePress( { ref: userRef } );
+    const handleSettingsClick = () => handlePress( { ref: settingsRef, path: '/settings' } );
+    const handleWorkoutClick = () => handlePress( { ref: workoutRef, path: '/workout' } );
+    const handleUsersClick = () => handlePress( { ref: userRef, path: 'user' } );
 
     return (
         <footer style={localStyles.container}>

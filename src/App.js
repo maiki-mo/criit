@@ -41,8 +41,8 @@ export default () => {
                         <User />
                     </Route>
                 </Switch>
+                <NavFooter />
             </Router>
-            <NavFooter />
         </div>
     );
 };

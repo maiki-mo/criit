@@ -8,8 +8,6 @@ export default ( { containerStyles } ) => {
     };
 
     return (
-        <div style={localStyles.container}>
-            <h1>Hi</h1>
-        </div>
+        <div style={localStyles.container} />
     );
 };
