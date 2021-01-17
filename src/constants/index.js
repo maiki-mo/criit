@@ -1,5 +1,3 @@
 import styles from './styles';
 
-export default {
-    styles,
-};
+export default { styles };
