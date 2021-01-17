@@ -9,7 +9,7 @@ export default ( { containerStyles } ) => {
         container: {
             ...flex.centerFlexRow,
             justifyContent: 'space-around',
-            height: '15%',
+            height: '10%',
             ...containerStyles,
         },
         text: {

@@ -1,9 +1,17 @@
 import React from 'react';
+import {
+    BrowserRouter as Router,
+    Redirect,
+    Route,
+    Switch,
+} from 'react-router-dom';
 
 import './App.css';
 import styles from './constants/styles';
 
 import Workout from './screens/Workout';
+import User from './screens/User';
+import Settings from './screens/Settings';
 import NavFooter from './components/NavFooter';
 
 export default () => {
@@ -18,7 +26,22 @@ export default () => {
 
     return (
         <div className="App" style={localStyles.container}>
-            <Workout />
+            <Router>
+                <Switch>
+                    <Route exact path="/">
+                        <Redirect to="/workout" />
+                    </Route>
+                    <Route exact path="/workout">
+                        <Workout />
+                    </Route>
+                    <Route exact path="/settings">
+                        <Settings />
+                    </Route>
+                    <Route exact path="/user">
+                        <User />
+                    </Route>
+                </Switch>
+            </Router>
             <NavFooter />
         </div>
     );
