@@ -1,28 +1,58 @@
-import React from 'react';
+/* eslint-disable no-param-reassign */
+import React, { useRef } from 'react';
 
 import ControlButton from './ControlButton';
 
 import styles from '../constants/styles';
+import images from '../constants/images';
 
 const { flex } = styles;
 
-export default ( {
-    onPlayClick,
-} ) => {
+export default () => {
     const localStyles = {
         container: {
             ...flex.centerFlexRow,
             justifyContent: 'space-around',
             width: '100%',
-            height: '50%',
+            height: '30%',
         },
     };
 
+    const resetRef = useRef( null );
+    const pausePlayRef = useRef( null );
+    const stopRef = useRef( null );
+
+    const handlePress = ( { ref } ) => {
+        ref.current.style.opacity = 0.4;
+        setTimeout( () => {
+            ref.current.style.opacity = 1;
+        }, 200 );
+    };
+
+    const handleOnPlayClick = () => handlePress( { ref: pausePlayRef } );
+    const handleOnStopClick = () => handlePress( { ref: stopRef } );
+    const handleOnResetClick = () => handlePress( { ref: resetRef } );
+
     return (
-        <div style={localStyles.container}>
-            <ControlButton size={24} onClick={() => null} value="Reset" />
-            <ControlButton size={30} onClick={onPlayClick} value="Play" />
-            <ControlButton size={24} onClick={() => null} value="Stop" />
-        </div>
+        <section style={localStyles.container}>
+            <ControlButton
+                refProp={resetRef}
+                onClick={handleOnResetClick}
+                value="Reset"
+                icon={images.resetButton}
+            />
+            <ControlButton
+                refProp={pausePlayRef}
+                onClick={handleOnPlayClick}
+                value="Play/Pause"
+                icon={images.playButton}
+            />
+            <ControlButton
+                refProp={stopRef}
+                onClick={handleOnStopClick}
+                value="Stop"
+                icon={images.stopButton}
+            />
+        </section>
     );
 };

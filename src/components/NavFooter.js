@@ -1,8 +1,8 @@
 import React from 'react';
 
-import constants from '../constants';
+import styles from '../constants/styles';
 
-const { styles: { flex } } = constants;
+const { flex } = styles;
 
 export default ( {
     icon,
@@ -12,9 +12,11 @@ export default ( {
             ...flex.centerFlexRow,
             position: 'absolute',
             bottom: 0,
-            width: '100%',
+            left: 0,
+            width: '100vw',
+            height: '9%',
             backgroundColor: '#A7B7C3',
-            height: '8%',
+            zIndex: 1000,
         },
     };
 

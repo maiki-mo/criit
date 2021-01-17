@@ -4,19 +4,25 @@ export default ( {
     onClick,
     value,
     icon,
-    size,
+    refProp,
+    containerStyles,
 } ) => {
     const localStyles = {
         container: {
             backgroundColor: 'transparent',
-            height: `${size}vw`,
-            width: `${size}vw`,
             border: 'none',
+            ...containerStyles,
+            padding: 0,
         },
     };
 
     return (
-        <button type="button" style={localStyles.container} onClick={onClick}>
+        <button
+            type="button"
+            style={localStyles.container}
+            onClick={onClick}
+            ref={refProp}
+        >
             <img src={icon} alt={value} />
         </button>
     );
