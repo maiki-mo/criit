@@ -9,6 +9,23 @@ const secondsToClockTime = ( { seconds } ) => {
     }`;
 };
 
+const secondsToColor = ( { seconds, colors } ) => {
+    let color = colors.lightBlue;
+
+    if ( seconds === 3 ) {
+        color = 'green';
+    } else if ( seconds === 2 ) {
+        color = 'orange';
+    } else if ( seconds === 1 ) {
+        color = 'red';
+    } else if ( seconds === 0 ) {
+        color = 'white';
+    }
+
+    return color;
+};
+
 export default {
     secondsToClockTime,
+    secondsToColor,
 };

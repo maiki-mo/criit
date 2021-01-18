@@ -1,14 +1,10 @@
 import React from 'react';
 
-import styles from '../constants/styles';
-
-const { colors } = styles;
-
-export default ( { width, active } ) => {
+export default ( { width, color } ) => {
     const localStyles = {
         container: {
             width: width || '100%',
-            borderBottom: `4px solid ${active ? colors.white : colors.lightBlue}`,
+            borderBottom: `4px solid ${color}`,
         },
     };
 

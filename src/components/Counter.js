@@ -2,25 +2,11 @@ import React from 'react';
 
 import LineBreak from './LineBreak';
 
+import numberUtils from '../utils/numbers';
 import styles from '../constants/styles';
 
+const { secondsToColor } = numberUtils;
 const { flex, colors } = styles;
-
-const getSecondsColor = ( { seconds } ) => {
-    let color = colors.lightBlue;
-
-    if ( seconds === 3 ) {
-        color = 'green';
-    } else if ( seconds === 2 ) {
-        color = 'orange';
-    } else if ( seconds === 1 ) {
-        color = 'red';
-    } else if ( seconds === 0 ) {
-        color = 'white';
-    }
-
-    return color;
-};
 
 export default ( { containerStyles, seconds } ) => {
     const localStyles = {
@@ -48,23 +34,27 @@ export default ( { containerStyles, seconds } ) => {
         },
     };
 
-    const mod = seconds % 5;
+    const color = secondsToColor( { seconds, colors } );
 
     return (
         <section style={localStyles.container}>
-            <p style={{ ...localStyles.seconds, color: getSecondsColor( { seconds } ) }}>{seconds || 0}</p>
+            <p style={{ ...localStyles.seconds, color }}>{seconds || 0}</p>
             <div style={localStyles.breakContainer}>
                 <LineBreak
                     width="85%"
-                    active={mod === 0}
+                    color={color}
                 />
                 <LineBreak
                     width="55%"
-                    active={mod === 0 || mod >= 3}
+                    color={color}
                 />
                 <LineBreak
                     width="35%"
-                    active={mod === 0 || mod >= 2}
+                    color={color}
+                />
+                <LineBreak
+                    width="15%"
+                    color={color}
                 />
             </div>
         </section>
