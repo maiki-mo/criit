@@ -8,7 +8,12 @@ import images from '../constants/images';
 
 const { flex } = styles;
 
-export default () => {
+export default ( {
+    playing,
+    onPlayClick,
+    onStopClick,
+    onResetClick,
+} ) => {
     const localStyles = {
         container: {
             ...flex.centerFlexRow,
@@ -29,9 +34,18 @@ export default () => {
         }, 200 );
     };
 
-    const handleOnPlayClick = () => handlePress( { ref: pausePlayRef } );
-    const handleOnStopClick = () => handlePress( { ref: stopRef } );
-    const handleOnResetClick = () => handlePress( { ref: resetRef } );
+    const handleOnPlayClick = () => {
+        handlePress( { ref: pausePlayRef } );
+        onPlayClick();
+    };
+    const handleOnStopClick = () => {
+        handlePress( { ref: stopRef } );
+        onStopClick();
+    };
+    const handleOnResetClick = () => {
+        handlePress( { ref: resetRef } );
+        onResetClick();
+    };
 
     return (
         <section style={localStyles.container}>
@@ -45,7 +59,7 @@ export default () => {
                 refProp={pausePlayRef}
                 onClick={handleOnPlayClick}
                 value="Play/Pause"
-                icon={images.playButton}
+                icon={playing ? images.pauseButton : images.playButton}
             />
             <ControlButton
                 refProp={stopRef}
