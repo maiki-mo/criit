@@ -1,10 +1,16 @@
 import React from 'react';
 
 import styles from '../constants/styles';
+import numbersUtil from '../utils/numbers';
 
+const { secondsToClockTime } = numbersUtil;
 const { flex, colors } = styles;
 
-export default ( { containerStyles } ) => {
+export default ( {
+    containerStyles,
+    reps,
+    totalSeconds,
+} ) => {
     const localStyles = {
         container: {
             ...flex.centerFlexRow,
@@ -22,8 +28,8 @@ export default ( { containerStyles } ) => {
 
     return (
         <section style={localStyles.container}>
-            <p style={localStyles.text}>T - 4:00</p>
-            <p style={localStyles.text}>R - 8</p>
+            <p style={localStyles.text}>{`T - ${secondsToClockTime( { seconds: totalSeconds } )}`}</p>
+            <p style={localStyles.text}>{`R - ${reps}`}</p>
             <p style={localStyles.text}>T - 4:00</p>
         </section>
     );

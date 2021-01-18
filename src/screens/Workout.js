@@ -4,17 +4,24 @@ import ActivityHeader from '../components/ActivityHeader';
 import Counter from '../components/Counter';
 import Controls from '../components/Controls';
 
-// import audio from '../constants/audio';
+import audio from '../constants/audio';
 
-// const { schoolBell } = audio;
+const { boxingBell } = audio;
 
 export default ( { containerStyles } ) => {
     const [seconds, setSeconds] = useState( 20 );
-    const [reps, setReps] = useState( null );
+    const [totalSeconds, setTotalSeconds] = useState( 0 );
+    const [reps, setReps] = useState( 0 );
     const [secsInterval, setSecsInterval] = useState( null );
-    // const bell = new Audio( schoolBell );
+    const [cooldown, setCooldown] = useState( false );
+    const bell = new Audio( boxingBell );
 
-    const setSecondInterval = () => setInterval( () => setSeconds( ( seconds ) => seconds - 1 ), 1000 );
+    const setCooldownInterval = () => setInterval( () => setSeconds( ( seconds ) => seconds - 1 ), 1000 );
+
+    const setSecondsInterval = () => setInterval( () => {
+        setTotalSeconds( ( seconds ) => seconds + 1 );
+        return setSeconds( ( seconds ) => seconds - 1 );
+    }, 1000 );
 
     const handlePlayClick = () => {
         if ( secsInterval ) {
@@ -22,29 +29,53 @@ export default ( { containerStyles } ) => {
             setSecsInterval( null );
             return;
         }
-        const interval = setSecondInterval();
+        const interval = setSecondsInterval();
         setSecsInterval( interval );
     };
     const handleStopClick = () => {
         clearInterval( secsInterval );
-        setSeconds( 20 );
         setSecsInterval( null );
+        setSeconds( 20 );
     };
     const handleResetClick = () => {
-        setReps( null );
-        setSeconds( null );
+        setReps( 0 );
+        setSeconds( 20 );
+        setTotalSeconds( 0 );
+        setCooldown( false );
+        setSecsInterval( null );
+    };
+    const initCooldownInterval = () => {
+        setCooldown( true );
+        setSeconds( 10 );
+        clearInterval( secsInterval );
+        const interval = setCooldownInterval();
+        setSecsInterval( interval );
+    };
+    const initActivityInteral = () => {
+        setSeconds( 20 );
+        const interval = setSecondsInterval();
+        setSecsInterval( interval );
+    };
+    const stopCooldownInterval = () => {
+        setCooldown( false );
+        clearInterval( secsInterval );
+        setSecsInterval( null );
+        initActivityInteral();
+    };
+    const stopActivityInterval = () => {
+        setTotalSeconds( ( seconds ) => seconds );
+        setReps( ( reps ) => reps + 1 );
+        initCooldownInterval();
+        bell.play();
     };
 
     useEffect( () => {
-        if ( seconds < 0 ) {
-            handleStopClick();
-            setSeconds( 20 );
-            // bell.play();
-            console.log( 'bell plays' );
-        }
-
-        if ( reps >= 8 ) {
-            console.log( 'reps should end' );
+        if ( seconds < 1 ) {
+            if ( cooldown ) {
+                stopCooldownInterval();
+            } else {
+                stopActivityInterval();
+            }
         }
     }, [seconds] );
 
@@ -56,11 +87,12 @@ export default ( { containerStyles } ) => {
         },
     };
 
+
     return (
         <main style={localStyles.container}>
             <ActivityHeader
                 reps={reps}
-                totalSeconds={20}
+                totalSeconds={totalSeconds}
             />
             <Counter
                 seconds={seconds}
