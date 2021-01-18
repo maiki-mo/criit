@@ -87,7 +87,6 @@ export default ( { containerStyles } ) => {
         },
     };
 
-
     return (
         <main style={localStyles.container}>
             <ActivityHeader
