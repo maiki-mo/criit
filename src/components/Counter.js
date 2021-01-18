@@ -15,6 +15,8 @@ const getSecondsColor = ( { seconds } ) => {
         color = 'orange';
     } else if ( seconds === 1 ) {
         color = 'red';
+    } else if ( seconds === 0 ) {
+        color = 'white';
     }
 
     return color;
@@ -46,21 +48,23 @@ export default ( { containerStyles, seconds } ) => {
         },
     };
 
+    const mod = seconds % 5;
+
     return (
         <section style={localStyles.container}>
             <p style={{ ...localStyles.seconds, color: getSecondsColor( { seconds } ) }}>{seconds || 0}</p>
             <div style={localStyles.breakContainer}>
                 <LineBreak
                     width="85%"
-                    active={seconds % 3 === 0}
+                    active={mod === 0}
                 />
                 <LineBreak
                     width="55%"
-                    active={seconds % 2 === 0}
+                    active={mod === 0 || mod >= 3}
                 />
                 <LineBreak
                     width="35%"
-                    active={seconds % 1 === 0}
+                    active={mod === 0 || mod >= 2}
                 />
             </div>
         </section>

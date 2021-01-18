@@ -36,7 +36,7 @@ export default ( { containerStyles } ) => {
     };
 
     useEffect( () => {
-        if ( seconds === 0 ) {
+        if ( seconds < 0 ) {
             handleStopClick();
             setSeconds( 20 );
             // bell.play();
