@@ -7,7 +7,7 @@ export default {
     },
     font: {
         overpass: {
-            fontFamily: 'Overpass, sans-serif',
+            fontFamily: 'Lato, sans-serif',
         },
     },
     flex: {

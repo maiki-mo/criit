@@ -9,12 +9,12 @@ import Controls from '../components/Controls';
 // const { schoolBell } = audio;
 
 export default ( { containerStyles } ) => {
-    const [seconds, setSeconds] = useState( null );
+    const [seconds, setSeconds] = useState( 20 );
     const [reps, setReps] = useState( null );
     const [secsInterval, setSecsInterval] = useState( null );
     // const bell = new Audio( schoolBell );
 
-    const setSecondInterval = () => setInterval( () => setSeconds( ( seconds ) => seconds + 1 ), 1000 );
+    const setSecondInterval = () => setInterval( () => setSeconds( ( seconds ) => seconds - 1 ), 1000 );
 
     const handlePlayClick = () => {
         if ( secsInterval ) {
@@ -27,7 +27,7 @@ export default ( { containerStyles } ) => {
     };
     const handleStopClick = () => {
         clearInterval( secsInterval );
-        setSeconds( null );
+        setSeconds( 20 );
         setSecsInterval( null );
     };
     const handleResetClick = () => {
@@ -36,8 +36,9 @@ export default ( { containerStyles } ) => {
     };
 
     useEffect( () => {
-        if ( seconds >= 4 ) {
+        if ( seconds === 0 ) {
             handleStopClick();
+            setSeconds( 20 );
             // bell.play();
             console.log( 'bell plays' );
         }
