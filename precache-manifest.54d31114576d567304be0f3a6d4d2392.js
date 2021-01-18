@@ -1,31 +1,35 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "6867239c5728f8bd7d8697f6de27bcf9",
+    "revision": "b8be847a4208bc6f329af2428d63322c",
     "url": "/crit-hiit/index.html"
   },
   {
-    "revision": "d1be1bd606221d59aa9e",
+    "revision": "82317cc9a62eee83db9b",
     "url": "/crit-hiit/static/css/main.fa2503f7.chunk.css"
   },
   {
-    "revision": "5e7df1e39676df1674cf",
-    "url": "/crit-hiit/static/js/2.a6b43b71.chunk.js"
+    "revision": "a48383a546499fd11540",
+    "url": "/crit-hiit/static/js/2.e46c29c4.chunk.js"
   },
   {
     "revision": "3c73c585782ac05880c0f89bcfdbba5a",
-    "url": "/crit-hiit/static/js/2.a6b43b71.chunk.js.LICENSE.txt"
+    "url": "/crit-hiit/static/js/2.e46c29c4.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "c610cb63192c8451dd8e",
-    "url": "/crit-hiit/static/js/3.34c48885.chunk.js"
+    "revision": "cf52fedbedf4eca6d7a1",
+    "url": "/crit-hiit/static/js/3.c11bbcca.chunk.js"
   },
   {
-    "revision": "d1be1bd606221d59aa9e",
-    "url": "/crit-hiit/static/js/main.0636a507.chunk.js"
+    "revision": "82317cc9a62eee83db9b",
+    "url": "/crit-hiit/static/js/main.177d38bb.chunk.js"
   },
   {
-    "revision": "3086e949d91a6d00863b",
-    "url": "/crit-hiit/static/js/runtime-main.cbb554a3.js"
+    "revision": "35707c87b9f2eb5e88ca",
+    "url": "/crit-hiit/static/js/runtime-main.8b224f29.js"
+  },
+  {
+    "revision": "f3b7b6a66bd6aa6d59021ea808ff5f12",
+    "url": "/crit-hiit/static/media/blow-whistle.f3b7b6a6.wav"
   },
   {
     "revision": "6747ce2ef0038d0067a1afbaed941595",

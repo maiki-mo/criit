@@ -1,19 +1,20 @@
 {
   "files": {
     "main.css": "/crit-hiit/static/css/main.fa2503f7.chunk.css",
-    "main.js": "/crit-hiit/static/js/main.0636a507.chunk.js",
-    "main.js.map": "/crit-hiit/static/js/main.0636a507.chunk.js.map",
-    "runtime-main.js": "/crit-hiit/static/js/runtime-main.cbb554a3.js",
-    "runtime-main.js.map": "/crit-hiit/static/js/runtime-main.cbb554a3.js.map",
-    "static/js/2.a6b43b71.chunk.js": "/crit-hiit/static/js/2.a6b43b71.chunk.js",
-    "static/js/2.a6b43b71.chunk.js.map": "/crit-hiit/static/js/2.a6b43b71.chunk.js.map",
-    "static/js/3.34c48885.chunk.js": "/crit-hiit/static/js/3.34c48885.chunk.js",
-    "static/js/3.34c48885.chunk.js.map": "/crit-hiit/static/js/3.34c48885.chunk.js.map",
+    "main.js": "/crit-hiit/static/js/main.177d38bb.chunk.js",
+    "main.js.map": "/crit-hiit/static/js/main.177d38bb.chunk.js.map",
+    "runtime-main.js": "/crit-hiit/static/js/runtime-main.8b224f29.js",
+    "runtime-main.js.map": "/crit-hiit/static/js/runtime-main.8b224f29.js.map",
+    "static/js/2.e46c29c4.chunk.js": "/crit-hiit/static/js/2.e46c29c4.chunk.js",
+    "static/js/2.e46c29c4.chunk.js.map": "/crit-hiit/static/js/2.e46c29c4.chunk.js.map",
+    "static/js/3.c11bbcca.chunk.js": "/crit-hiit/static/js/3.c11bbcca.chunk.js",
+    "static/js/3.c11bbcca.chunk.js.map": "/crit-hiit/static/js/3.c11bbcca.chunk.js.map",
     "index.html": "/crit-hiit/index.html",
-    "precache-manifest.ef22b41c0c05939e2d412f1fd2bea4d1.js": "/crit-hiit/precache-manifest.ef22b41c0c05939e2d412f1fd2bea4d1.js",
+    "precache-manifest.54d31114576d567304be0f3a6d4d2392.js": "/crit-hiit/precache-manifest.54d31114576d567304be0f3a6d4d2392.js",
     "service-worker.js": "/crit-hiit/service-worker.js",
     "static/css/main.fa2503f7.chunk.css.map": "/crit-hiit/static/css/main.fa2503f7.chunk.css.map",
-    "static/js/2.a6b43b71.chunk.js.LICENSE.txt": "/crit-hiit/static/js/2.a6b43b71.chunk.js.LICENSE.txt",
+    "static/js/2.e46c29c4.chunk.js.LICENSE.txt": "/crit-hiit/static/js/2.e46c29c4.chunk.js.LICENSE.txt",
+    "static/media/blow-whistle.wav": "/crit-hiit/static/media/blow-whistle.f3b7b6a6.wav",
     "static/media/boxing-bell.wav": "/crit-hiit/static/media/boxing-bell.6747ce2e.wav",
     "static/media/pause-button.svg": "/crit-hiit/static/media/pause-button.482bf33f.svg",
     "static/media/play-button.svg": "/crit-hiit/static/media/play-button.a77a6097.svg",
@@ -25,9 +26,9 @@
     "static/media/workout-icon.svg": "/crit-hiit/static/media/workout-icon.a6119952.svg"
   },
   "entrypoints": [
-    "static/js/runtime-main.cbb554a3.js",
-    "static/js/2.a6b43b71.chunk.js",
+    "static/js/runtime-main.8b224f29.js",
+    "static/js/2.e46c29c4.chunk.js",
     "static/css/main.fa2503f7.chunk.css",
-    "static/js/main.0636a507.chunk.js"
+    "static/js/main.177d38bb.chunk.js"
   ]
 }
