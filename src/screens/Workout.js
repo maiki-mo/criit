@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import NoSleep from 'nosleep.js';
 
 import ActivityHeader from '../components/ActivityHeader';
 import Counter from '../components/Counter';
@@ -72,11 +71,6 @@ export default ( { containerStyles } ) => {
         initCooldownInterval();
         bell.play();
     };
-
-    useEffect( () => {
-        const noSleep = new NoSleep();
-        document.addEventListener( 'DOMContentLoaded', noSleep.enable );
-    }, [] );
 
     useEffect( () => {
         if ( seconds < 1 ) {
