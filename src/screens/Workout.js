@@ -7,7 +7,7 @@ import Controls from '../components/Controls';
 
 import audio from '../constants/audio';
 
-const { boxingBell } = audio;
+const { boxingBell, blowWhistle } = audio;
 
 export default ( { containerStyles } ) => {
     const [seconds, setSeconds] = useState( 20 );
@@ -16,6 +16,7 @@ export default ( { containerStyles } ) => {
     const [secsInterval, setSecsInterval] = useState( null );
     const [cooldown, setCooldown] = useState( false );
     const bell = new Audio( boxingBell );
+    const whistle = new Audio( blowWhistle );
 
     const setCooldownInterval = () => setInterval( () => setSeconds( ( seconds ) => seconds - 1 ), 1000 );
 
@@ -32,6 +33,7 @@ export default ( { containerStyles } ) => {
         }
         const interval = setSecondsInterval();
         setSecsInterval( interval );
+        whistle.play();
     };
     const handleStopClick = () => {
         clearInterval( secsInterval );
@@ -56,6 +58,7 @@ export default ( { containerStyles } ) => {
         setSeconds( 20 );
         const interval = setSecondsInterval();
         setSecsInterval( interval );
+        whistle.play();
     };
     const stopCooldownInterval = () => {
         setCooldown( false );
