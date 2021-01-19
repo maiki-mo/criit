@@ -36,8 +36,6 @@ export default ( { containerStyles } ) => {
             ref.current.style.opacity = 1;
         }, 200 );
 
-        console.log( history );
-
         history.push( path );
     };
 

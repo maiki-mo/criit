@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { lazy, Suspense } from 'react';
 import {
     BrowserRouter as Router,
     Redirect,
@@ -9,10 +9,10 @@ import {
 import './App.css';
 import styles from './constants/styles';
 
-import Workout from './screens/Workout';
-import User from './screens/User';
-import Settings from './screens/Settings';
-import NavFooter from './components/NavFooter';
+const Workout = lazy( () => import( './screens/Workout' ) );
+const User = lazy( () => import( './screens/User' ) );
+const Settings = lazy( () => import( './screens/Settings' ) );
+const NavFooter = lazy( () => import( './components/NavFooter' ) );
 
 export default () => {
     const localStyles = {
@@ -27,21 +27,23 @@ export default () => {
     return (
         <div className="App" style={localStyles.container}>
             <Router>
-                <Switch>
-                    <Route exact path="/">
-                        <Redirect to="/workout" />
-                    </Route>
-                    <Route exact path="/workout">
-                        <Workout />
-                    </Route>
-                    <Route exact path="/settings">
-                        <Settings />
-                    </Route>
-                    <Route exact path="/user">
-                        <User />
-                    </Route>
-                </Switch>
-                <NavFooter />
+                <Suspense fallback={<div>Loading...</div>}>
+                    <Switch>
+                        <Route exact path="/">
+                            <Redirect to="/workout" />
+                        </Route>
+                        <Route exact path="/workout">
+                            <Workout />
+                        </Route>
+                        <Route exact path="/settings">
+                            <Settings />
+                        </Route>
+                        <Route exact path="/user">
+                            <User />
+                        </Route>
+                    </Switch>
+                    <NavFooter />
+                </Suspense>
             </Router>
         </div>
     );

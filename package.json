@@ -1,6 +1,6 @@
 {
   "name": "crit-hiit",
-  "homepage": "http://maiki-mo.github.io/crit-hiit",
+  "homepage": "./",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
