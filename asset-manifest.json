@@ -1,19 +1,27 @@
 {
   "files": {
     "main.css": "/crit-hiit/static/css/main.fa2503f7.chunk.css",
-    "main.js": "/crit-hiit/static/js/main.177d38bb.chunk.js",
-    "main.js.map": "/crit-hiit/static/js/main.177d38bb.chunk.js.map",
-    "runtime-main.js": "/crit-hiit/static/js/runtime-main.8b224f29.js",
-    "runtime-main.js.map": "/crit-hiit/static/js/runtime-main.8b224f29.js.map",
-    "static/js/2.e46c29c4.chunk.js": "/crit-hiit/static/js/2.e46c29c4.chunk.js",
-    "static/js/2.e46c29c4.chunk.js.map": "/crit-hiit/static/js/2.e46c29c4.chunk.js.map",
-    "static/js/3.c11bbcca.chunk.js": "/crit-hiit/static/js/3.c11bbcca.chunk.js",
-    "static/js/3.c11bbcca.chunk.js.map": "/crit-hiit/static/js/3.c11bbcca.chunk.js.map",
+    "main.js": "/crit-hiit/static/js/main.c62d6c63.chunk.js",
+    "main.js.map": "/crit-hiit/static/js/main.c62d6c63.chunk.js.map",
+    "runtime-main.js": "/crit-hiit/static/js/runtime-main.ea992b2e.js",
+    "runtime-main.js.map": "/crit-hiit/static/js/runtime-main.ea992b2e.js.map",
+    "static/js/2.08526a77.chunk.js": "/crit-hiit/static/js/2.08526a77.chunk.js",
+    "static/js/2.08526a77.chunk.js.map": "/crit-hiit/static/js/2.08526a77.chunk.js.map",
+    "static/js/3.ac5b5a73.chunk.js": "/crit-hiit/static/js/3.ac5b5a73.chunk.js",
+    "static/js/3.ac5b5a73.chunk.js.map": "/crit-hiit/static/js/3.ac5b5a73.chunk.js.map",
+    "static/js/4.789a5cf3.chunk.js": "/crit-hiit/static/js/4.789a5cf3.chunk.js",
+    "static/js/4.789a5cf3.chunk.js.map": "/crit-hiit/static/js/4.789a5cf3.chunk.js.map",
+    "static/js/5.c9d13d28.chunk.js": "/crit-hiit/static/js/5.c9d13d28.chunk.js",
+    "static/js/5.c9d13d28.chunk.js.map": "/crit-hiit/static/js/5.c9d13d28.chunk.js.map",
+    "static/js/6.041f732d.chunk.js": "/crit-hiit/static/js/6.041f732d.chunk.js",
+    "static/js/6.041f732d.chunk.js.map": "/crit-hiit/static/js/6.041f732d.chunk.js.map",
+    "static/js/7.416ee49a.chunk.js": "/crit-hiit/static/js/7.416ee49a.chunk.js",
+    "static/js/7.416ee49a.chunk.js.map": "/crit-hiit/static/js/7.416ee49a.chunk.js.map",
     "index.html": "/crit-hiit/index.html",
-    "precache-manifest.54d31114576d567304be0f3a6d4d2392.js": "/crit-hiit/precache-manifest.54d31114576d567304be0f3a6d4d2392.js",
+    "precache-manifest.3eb0898067e949346d27bbd136864b35.js": "/crit-hiit/precache-manifest.3eb0898067e949346d27bbd136864b35.js",
     "service-worker.js": "/crit-hiit/service-worker.js",
     "static/css/main.fa2503f7.chunk.css.map": "/crit-hiit/static/css/main.fa2503f7.chunk.css.map",
-    "static/js/2.e46c29c4.chunk.js.LICENSE.txt": "/crit-hiit/static/js/2.e46c29c4.chunk.js.LICENSE.txt",
+    "static/js/2.08526a77.chunk.js.LICENSE.txt": "/crit-hiit/static/js/2.08526a77.chunk.js.LICENSE.txt",
     "static/media/blow-whistle.wav": "/crit-hiit/static/media/blow-whistle.f3b7b6a6.wav",
     "static/media/boxing-bell.wav": "/crit-hiit/static/media/boxing-bell.6747ce2e.wav",
     "static/media/pause-button.svg": "/crit-hiit/static/media/pause-button.482bf33f.svg",
@@ -26,9 +34,9 @@
     "static/media/workout-icon.svg": "/crit-hiit/static/media/workout-icon.a6119952.svg"
   },
   "entrypoints": [
-    "static/js/runtime-main.8b224f29.js",
-    "static/js/2.e46c29c4.chunk.js",
+    "static/js/runtime-main.ea992b2e.js",
+    "static/js/2.08526a77.chunk.js",
     "static/css/main.fa2503f7.chunk.css",
-    "static/js/main.177d38bb.chunk.js"
+    "static/js/main.c62d6c63.chunk.js"
   ]
 }
