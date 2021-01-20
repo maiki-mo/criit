@@ -2,7 +2,6 @@ import React, {
     lazy,
     Suspense,
     useEffect,
-    useState,
 } from 'react';
 import {
     BrowserRouter as Router,
