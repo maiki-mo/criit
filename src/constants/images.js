@@ -3,8 +3,11 @@ import pauseButton from '../assets/images/pause-button.svg';
 import resetButton from '../assets/images/reset-button.svg';
 import stopButton from '../assets/images/stop-button.svg';
 import userIcon from '../assets/images/user-icon.svg';
+import userIconWhite from '../assets/images/user-icon-white.svg';
 import workoutIcon from '../assets/images/workout-icon.svg';
+import workoutIconWhite from '../assets/images/workout-icon-white.svg';
 import settingsIcon from '../assets/images/settings-icon.svg';
+import settingsIconWhite from '../assets/images/settings-icon-white.svg';
 
 export default {
     playButton,
@@ -12,6 +15,9 @@ export default {
     resetButton,
     stopButton,
     userIcon,
+    userIconWhite,
     workoutIcon,
+    workoutIconWhite,
     settingsIcon,
+    settingsIconWhite,
 };

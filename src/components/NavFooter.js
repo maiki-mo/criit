@@ -1,6 +1,6 @@
 /* eslint-disable no-param-reassign */
 import React, { useRef } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useHistory, useLocation } from 'react-router-dom';
 
 import NavButton from './NavButton';
 
@@ -10,7 +10,9 @@ import images from '../constants/images';
 const { flex } = styles;
 
 export default ( { containerStyles } ) => {
-    const history = useHistory();
+    const { push } = useHistory();
+    const { pathname } = useLocation();
+
     const localStyles = {
         container: {
             ...flex.centerFlexRow,
@@ -36,7 +38,7 @@ export default ( { containerStyles } ) => {
             ref.current.style.opacity = 1;
         }, 200 );
 
-        history.push( path );
+        push( path );
     };
 
     const handleSettingsClick = () => handlePress( { ref: settingsRef, path: '/settings' } );
@@ -47,17 +49,23 @@ export default ( { containerStyles } ) => {
         <footer style={localStyles.container}>
             <NavButton
                 refProp={settingsRef}
-                icon={images.settingsIcon}
+                icon={pathname === '/settings'
+                    ? images.settingsIcon
+                    : images.settingsIconWhite}
                 onClick={handleSettingsClick}
             />
             <NavButton
                 refProp={workoutRef}
-                icon={images.workoutIcon}
+                icon={pathname === '/workout'
+                    ? images.workoutIcon
+                    : images.workoutIconWhite}
                 onClick={handleWorkoutClick}
             />
             <NavButton
                 refProp={userRef}
-                icon={images.userIcon}
+                icon={pathname === '/user'
+                    ? images.userIcon
+                    : images.userIconWhite}
                 onClick={handleUsersClick}
             />
         </footer>

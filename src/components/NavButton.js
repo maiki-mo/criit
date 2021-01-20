@@ -10,7 +10,7 @@ export default ( {
     icon,
     size,
     refProp,
-    continarStyles,
+    containerStyles,
 } ) => {
     const localStyles = {
         container: {
@@ -19,7 +19,7 @@ export default ( {
             height: `${size}vw`,
             width: `${size}vw`,
             border: 'none',
-            ...continarStyles,
+            ...containerStyles,
         },
     };
 
