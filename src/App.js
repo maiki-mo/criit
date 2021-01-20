@@ -1,4 +1,9 @@
-import React, { lazy, Suspense, useEffect } from 'react';
+import React, {
+    lazy,
+    Suspense,
+    useEffect,
+    useState,
+} from 'react';
 import {
     BrowserRouter as Router,
     Redirect,
@@ -24,15 +29,23 @@ export default () => {
         },
     };
 
+    const setWakeLock = async () => {
+        try {
+            await navigator.wakeLock.request( 'screen' );
+        } catch ( error ) {
+            console.log( 'wake lock not available' );
+        }
+    };
+
+    const handleVisibilityChange = () => {
+        if ( document.visibilityState === 'visible' ) {
+            setWakeLock();
+        }
+    };
+
     useEffect( () => {
-        const initWakeLock = async () => {
-            try {
-                await navigator.wakeLock.request( 'screen' );
-            } catch ( error ) {
-                console.log( 'wake lock not available' );
-            }
-        };
-        initWakeLock();
+        setWakeLock();
+        document.addEventListener( 'visibilitychange', handleVisibilityChange );
     }, [] );
 
     return (
