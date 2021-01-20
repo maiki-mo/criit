@@ -1,4 +1,4 @@
-import React, { lazy, Suspense } from 'react';
+import React, { lazy, Suspense, useEffect } from 'react';
 import {
     BrowserRouter as Router,
     Redirect,
@@ -23,6 +23,17 @@ export default () => {
             backgroundColor: '#123652',
         },
     };
+
+    useEffect( () => {
+        const initWakeLock = async () => {
+            try {
+                await navigator.wakeLock.request( 'screen' );
+            } catch ( error ) {
+                console.log( 'wake lock not available' );
+            }
+        };
+        initWakeLock();
+    }, [] );
 
     return (
         <div className="App" style={localStyles.container}>
