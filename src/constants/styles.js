@@ -4,6 +4,7 @@ export default {
         lightBlue: '#A7B7C3',
         white: '#fff',
         black: '#000',
+        darkGrey: '#464546',
     },
     font: {
         overpass: {

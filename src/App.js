@@ -3,6 +3,7 @@ import React, {
     Suspense,
     useEffect,
 } from 'react';
+import { RecoilRoot } from 'recoil';
 import {
     BrowserRouter as Router,
     Redirect,
@@ -49,25 +50,27 @@ export default () => {
 
     return (
         <div className="App" style={localStyles.container}>
-            <Router>
-                <Suspense fallback={<div>Loading...</div>}>
-                    <Switch>
-                        <Route exact path="/">
-                            <Redirect to="/workout" />
-                        </Route>
-                        <Route exact path="/workout">
-                            <Workout />
-                        </Route>
-                        <Route exact path="/settings">
-                            <Settings />
-                        </Route>
-                        <Route exact path="/user">
-                            <User />
-                        </Route>
-                    </Switch>
-                    <NavFooter />
-                </Suspense>
-            </Router>
+            <RecoilRoot>
+                <Router>
+                    <Suspense fallback={<div>Loading...</div>}>
+                        <Switch>
+                            <Route exact path="/">
+                                <Redirect to="/workout" />
+                            </Route>
+                            <Route exact path="/workout">
+                                <Workout />
+                            </Route>
+                            <Route exact path="/settings">
+                                <Settings />
+                            </Route>
+                            <Route exact path="/user">
+                                <User />
+                            </Route>
+                        </Switch>
+                        <NavFooter />
+                    </Suspense>
+                </Router>
+            </RecoilRoot>
         </div>
     );
 };
