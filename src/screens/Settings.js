@@ -120,7 +120,7 @@ export default ( { containerStyles } ) => {
             />
             <ToggleSwitchItem
                 onHandleColor={colors.blue}
-                offHandleColor={colors.darkGrey}
+                offHandleColor={colors.grey}
                 text="Keep Screen Awake"
                 onColor={colors.lightBlue}
                 offColor={colors.lightBlue}
@@ -130,7 +130,7 @@ export default ( { containerStyles } ) => {
             />
             <ToggleSwitchItem
                 onHandleColor={colors.blue}
-                offHandleColor={colors.darkGrey}
+                offHandleColor={colors.grey}
                 text="Sound"
                 onColor={colors.lightBlue}
                 offColor={colors.lightBlue}

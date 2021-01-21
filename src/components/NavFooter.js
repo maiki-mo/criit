@@ -51,21 +51,21 @@ export default ( { containerStyles } ) => {
                 refProp={settingsRef}
                 icon={pathname === '/settings'
                     ? images.settingsIcon
-                    : images.settingsIconWhite}
+                    : images.settingsIconGrey}
                 onClick={handleSettingsClick}
             />
             <NavButton
                 refProp={workoutRef}
                 icon={pathname === '/workout'
                     ? images.workoutIcon
-                    : images.workoutIconWhite}
+                    : images.workoutIconGrey}
                 onClick={handleWorkoutClick}
             />
             <NavButton
                 refProp={userRef}
                 icon={pathname === '/user'
                     ? images.userIcon
-                    : images.userIconWhite}
+                    : images.userIconGrey}
                 onClick={handleUsersClick}
             />
         </footer>
