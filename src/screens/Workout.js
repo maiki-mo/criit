@@ -8,7 +8,7 @@ import Controls from '../components/Controls';
 import audio from '../constants/audio';
 import state from '../constants/state';
 
-const { wakeLock, sound } = state;
+const { sound } = state;
 const { boxingBell, blowWhistle } = audio;
 
 export default ( { containerStyles } ) => {

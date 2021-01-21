@@ -95,9 +95,9 @@ export default ( { containerStyles } ) => {
     const localStyles = {
         container: {
             ...flex.centerFlexCol,
-            ...containerStyles,
             paddingLeft: 30,
             paddingRight: 30,
+            ...containerStyles,
         },
     };
 
