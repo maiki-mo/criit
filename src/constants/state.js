@@ -1,14 +1,15 @@
 import {
     atom,
 } from 'recoil';
+import services from '../services';
 
 export default {
     wakeLock: atom( {
         key: 'wake lock',
-        default: true,
+        default: services.getWakeLockOption() || true,
     } ),
     sound: atom( {
         key: 'sound',
-        default: true,
+        default: services.getSoundOption() || true,
     } ),
 };

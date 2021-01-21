@@ -3,11 +3,14 @@ import { useRecoilState } from 'recoil';
 
 import styles from '../constants/styles';
 import state from '../constants/state';
+import services from '../services';
 
 import ToggleSwitchItem from '../components/ToggleSwitchItem';
+import ScreenHeader from '../components/ScreenHeader';
 
 const { colors, flex } = styles;
 const { wakeLock, sound } = state;
+const { setSoundOption, setWakeLockOption } = services;
 
 // const SettingsInput = ( {
 //     label,
@@ -99,15 +102,22 @@ export default ( { containerStyles } ) => {
     };
 
     const handleStayWakeSwitch = () => {
+        setWakeLockOption( { value: !wakeLocked } );
         setWakeLock( !wakeLocked );
     };
 
     const handleSoundSwitch = () => {
+        setSoundOption( { value: !soundOn } );
         setSound( !soundOn );
     };
 
     return (
         <div style={localStyles.container}>
+            <ScreenHeader
+                title="Settings"
+                titleColor={colors.lightBlue}
+                titleSize={18}
+            />
             <ToggleSwitchItem
                 onHandleColor={colors.blue}
                 offHandleColor={colors.darkGrey}
