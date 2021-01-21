@@ -3,7 +3,7 @@ import React, {
     Suspense,
     useEffect,
 } from 'react';
-import { RecoilRoot } from 'recoil';
+import { useRecoilState } from 'recoil';
 import {
     BrowserRouter as Router,
     Redirect,
@@ -12,7 +12,11 @@ import {
 } from 'react-router-dom';
 
 import './App.css';
+
 import styles from './constants/styles';
+import state from './constants/state';
+
+const { wakeLock } = state;
 
 const Workout = lazy( () => import( './screens/Workout' ) );
 const User = lazy( () => import( './screens/User' ) );
@@ -20,6 +24,8 @@ const Settings = lazy( () => import( './screens/Settings' ) );
 const NavFooter = lazy( () => import( './components/NavFooter' ) );
 
 export default () => {
+    const [wakeLocked] = useRecoilState( wakeLock );
+
     const localStyles = {
         container: {
             ...styles.font.overpass,
@@ -30,6 +36,10 @@ export default () => {
     };
 
     const setWakeLock = async () => {
+        if ( !wakeLocked ) {
+            return;
+        }
+
         try {
             await navigator.wakeLock.request( 'screen' );
         } catch ( error ) {
@@ -50,27 +60,25 @@ export default () => {
 
     return (
         <div className="App" style={localStyles.container}>
-            <RecoilRoot>
-                <Router>
-                    <Suspense fallback={<div>Loading...</div>}>
-                        <Switch>
-                            <Route exact path="/">
-                                <Redirect to="/workout" />
-                            </Route>
-                            <Route exact path="/workout">
-                                <Workout />
-                            </Route>
-                            <Route exact path="/settings">
-                                <Settings />
-                            </Route>
-                            <Route exact path="/user">
-                                <User />
-                            </Route>
-                        </Switch>
-                        <NavFooter />
-                    </Suspense>
-                </Router>
-            </RecoilRoot>
+            <Router>
+                <Suspense fallback={<div>Loading...</div>}>
+                    <Switch>
+                        <Route exact path="/">
+                            <Redirect to="/workout" />
+                        </Route>
+                        <Route exact path="/workout">
+                            <Workout />
+                        </Route>
+                        <Route exact path="/settings">
+                            <Settings />
+                        </Route>
+                        <Route exact path="/user">
+                            <User />
+                        </Route>
+                    </Switch>
+                    <NavFooter />
+                </Suspense>
+            </Router>
         </div>
     );
 };

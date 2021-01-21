@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from 'react';
+import { useRecoilState } from 'recoil';
 
 import ActivityHeader from '../components/ActivityHeader';
 import Counter from '../components/Counter';
 import Controls from '../components/Controls';
 
 import audio from '../constants/audio';
+import state from '../constants/state';
 
+const { wakeLock, sound } = state;
 const { boxingBell, blowWhistle } = audio;
 
 export default ( { containerStyles } ) => {
@@ -14,6 +17,8 @@ export default ( { containerStyles } ) => {
     const [reps, setReps] = useState( 0 );
     const [secsInterval, setSecsInterval] = useState( null );
     const [cooldown, setCooldown] = useState( false );
+    const [soundOn] = useRecoilState( sound );
+
     const bell = new Audio( boxingBell );
     const whistle = new Audio( blowWhistle );
 
@@ -32,7 +37,10 @@ export default ( { containerStyles } ) => {
         }
         const interval = setSecondsInterval();
         setSecsInterval( interval );
-        whistle.play();
+        if ( soundOn ) {
+            whistle.play();
+        }
+        window.navigator.vibrate( 200 );
     };
     const handleStopClick = () => {
         clearInterval( secsInterval );
@@ -57,7 +65,10 @@ export default ( { containerStyles } ) => {
         setSeconds( 20 );
         const interval = setSecondsInterval();
         setSecsInterval( interval );
-        whistle.play();
+        if ( soundOn ) {
+            whistle.play();
+        }
+        window.navigator.vibrate( 200 );
     };
     const stopCooldownInterval = () => {
         setCooldown( false );
@@ -69,7 +80,10 @@ export default ( { containerStyles } ) => {
         setTotalSeconds( ( seconds ) => seconds );
         setReps( ( reps ) => reps + 1 );
         initCooldownInterval();
-        bell.play();
+        if ( soundOn ) {
+            bell.play();
+        }
+        window.navigator.vibrate( 200 );
     };
 
     useEffect( () => {
