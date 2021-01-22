@@ -4,10 +4,13 @@ import { useRecoilState } from 'recoil';
 import ActivityHeader from '../components/ActivityHeader';
 import Counter from '../components/Counter';
 import Controls from '../components/Controls';
+import Modal from '../components/Modal';
 
 import audio from '../constants/audio';
 import state from '../constants/state';
+import style from '../constants/styles';
 
+const { colors, flex } = style;
 const { sound } = state;
 const { boxingBell, blowWhistle } = audio;
 
@@ -18,6 +21,8 @@ export default ( { containerStyles } ) => {
     const [secsInterval, setSecsInterval] = useState( null );
     const [cooldown, setCooldown] = useState( false );
     const [soundOn] = useRecoilState( sound );
+    const [modal, setModal] = useState( true );
+    // const [startCountdown, setStartCountdown] = useState( true );
 
     const bell = new Audio( boxingBell );
     const whistle = new Audio( blowWhistle );
@@ -28,6 +33,11 @@ export default ( { containerStyles } ) => {
         setTotalSeconds( ( seconds ) => seconds + 1 );
         return setSeconds( ( seconds ) => seconds - 1 );
     }, 1000 );
+
+    // const handleStartCountdown = () => {
+    //     setSeconds( 3 );
+    //     setSecondsInterval();
+    // };
 
     const handlePlayClick = () => {
         if ( secsInterval ) {
@@ -119,6 +129,9 @@ export default ( { containerStyles } ) => {
                 onResetClick={handleResetClick}
                 onStopClick={handleStopClick}
             />
+            <Modal display={modal}>
+                <h1>Hi</h1>
+            </Modal>
         </main>
     );
 };

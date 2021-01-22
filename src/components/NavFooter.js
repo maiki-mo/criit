@@ -23,7 +23,7 @@ export default ( { containerStyles } ) => {
             width: '100vw',
             height: '10%',
             backgroundColor: '#A7B7C3',
-            zIndex: 1000,
+            zIndex: 100,
             ...containerStyles,
         },
     };

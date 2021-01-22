@@ -5,6 +5,7 @@ export default ( {
     value,
     icon,
     refProp,
+    imageSize,
     containerStyles,
 } ) => {
     const localStyles = {
@@ -23,7 +24,11 @@ export default ( {
             onClick={onClick}
             ref={refProp}
         >
-            <img src={icon} alt={value} />
+            <img
+                style={{ width: `${imageSize}%` }}
+                src={icon}
+                alt={value}
+            />
         </button>
     );
 };

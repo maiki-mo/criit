@@ -54,18 +54,21 @@ export default ( {
                 onClick={handleOnResetClick}
                 value="Reset"
                 icon={images.resetButton}
+                imageSize={70}
             />
             <ControlButton
                 refProp={pausePlayRef}
                 onClick={handleOnPlayClick}
                 value="Play/Pause"
                 icon={playing ? images.pauseButton : images.playButton}
+                imageSize={100}
             />
             <ControlButton
                 refProp={stopRef}
                 onClick={handleOnStopClick}
                 value="Stop"
                 icon={images.stopButton}
+                imageSize={70}
             />
         </section>
     );
