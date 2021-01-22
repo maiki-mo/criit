@@ -8,9 +8,7 @@ import Modal from '../components/Modal';
 
 import audio from '../constants/audio';
 import state from '../constants/state';
-import style from '../constants/styles';
 
-const { colors, flex } = style;
 const { sound } = state;
 const { boxingBell, blowWhistle } = audio;
 
@@ -21,7 +19,7 @@ export default ( { containerStyles } ) => {
     const [secsInterval, setSecsInterval] = useState( null );
     const [cooldown, setCooldown] = useState( false );
     const [soundOn] = useRecoilState( sound );
-    const [modal, setModal] = useState( true );
+    const [modal] = useState( true );
     // const [startCountdown, setStartCountdown] = useState( true );
 
     const bell = new Audio( boxingBell );
