@@ -8,9 +8,57 @@ import Modal from '../components/Modal';
 
 import audio from '../constants/audio';
 import state from '../constants/state';
+import styles from '../constants/styles';
 
+const { colors } = styles;
 const { sound } = state;
 const { boxingBell, blowWhistle } = audio;
+
+const CountdownModal = ( { containerStyles, onFinish, colors } ) => {
+    const [seconds, setSeconds] = useState( 3 );
+
+    useEffect( () => {
+        const setSecondsInterval = () => setInterval( () => setSeconds( ( seconds ) => seconds - 1 ), 1000 );
+        setSecondsInterval();
+    }, [] );
+
+    useEffect( () => {
+        if ( seconds === -1 ) {
+            onFinish();
+        }
+    }, [seconds] );
+
+    let textColor = colors.lightBlue;
+
+    if ( seconds === 3 ) {
+        textColor = 'green';
+    } else if ( seconds === 2 ) {
+        textColor = 'orange';
+    } else if ( seconds === 1 ) {
+        textColor = 'red';
+    } else if ( seconds === 0 ) {
+        textColor = colors.white;
+    }
+
+    const localStyles = {
+        container: {
+            ...containerStyles,
+        },
+        text: {
+            fontWeight: 300,
+            fontSize: 180,
+            color: textColor,
+        },
+    };
+
+    return (
+        <div style={localStyles.container}>
+            <h1 style={localStyles.text}>
+                {seconds}
+            </h1>
+        </div>
+    );
+};
 
 export default ( { containerStyles } ) => {
     const [seconds, setSeconds] = useState( 20 );
@@ -19,7 +67,7 @@ export default ( { containerStyles } ) => {
     const [secsInterval, setSecsInterval] = useState( null );
     const [cooldown, setCooldown] = useState( false );
     const [soundOn] = useRecoilState( sound );
-    const [modal] = useState( true );
+    const [modal, setModal] = useState( true );
     // const [startCountdown, setStartCountdown] = useState( true );
 
     const bell = new Audio( boxingBell );
@@ -93,6 +141,10 @@ export default ( { containerStyles } ) => {
         }
         window.navigator.vibrate( 200 );
     };
+    const handleModalClose = () => {
+        setModal( false );
+        handlePlayClick();
+    };
 
     useEffect( () => {
         if ( seconds < 1 ) {
@@ -128,7 +180,7 @@ export default ( { containerStyles } ) => {
                 onStopClick={handleStopClick}
             />
             <Modal display={modal}>
-                <h1>Hi</h1>
+                <CountdownModal colors={colors} onFinish={handleModalClose} />
             </Modal>
         </main>
     );

@@ -5,6 +5,8 @@ import style from '../constants/styles';
 
 const { flex, colors } = style;
 
+Modal.setAppElement( '#root' );
+
 export default ( {
     display,
     children,
@@ -14,10 +16,21 @@ export default ( {
         container: {
             ...containerStyles,
         },
+        dampContainer: {
+            display: display ? 'block' : 'none',
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            width: '100%',
+            height: '100%',
+            opacity: 0.7,
+            backgroundColor: colors.blue,
+        },
     };
 
     return (
         <div style={localStyles.container}>
+            <div style={localStyles.dampContainer} />
             <Modal
                 isOpen={display}
                 style={{
@@ -26,6 +39,9 @@ export default ( {
                         opacity: 0.9,
                     },
                     content: {
+                        borderRadius: 0,
+                        marginTop: '25%',
+                        marginBottom: '25%',
                         backgroundColor: colors.blue,
                         border: `1px solid ${colors.white}`,
                         color: colors.lightBlue,
