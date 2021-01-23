@@ -1,9 +1,7 @@
 import React from 'react';
 
 import styles from '../constants/styles';
-import numbersUtil from '../utils/numbers';
 
-const { secondsToClockTime } = numbersUtil;
 const { flex, colors } = styles;
 
 export default ( {
@@ -14,7 +12,9 @@ export default ( {
     const localStyles = {
         container: {
             ...flex.centerFlexRow,
-            justifyContent: 'space-around',
+            justifyContent: 'space-between',
+            paddingRight: '5%',
+            paddingLeft: '5%',
             height: '10%',
             ...containerStyles,
         },
@@ -22,15 +22,23 @@ export default ( {
             margin: 0,
             color: colors.lightBlue,
             fontWeight: 'bold',
-            fontSize: 22,
+            fontSize: 20,
+        },
+        textEmphasis: {
+            fontSize: 24,
         },
     };
 
     return (
         <section style={localStyles.container}>
-            <p style={localStyles.text}>{`T - ${secondsToClockTime( { seconds: totalSeconds } )}`}</p>
-            <p style={localStyles.text}>{`R - ${reps}`}</p>
-            <p style={localStyles.text}>T - 4:00</p>
+            <p style={localStyles.text}>
+                Total:
+                <span style={localStyles.textEmphasis}>{` ${totalSeconds}`}</span>
+            </p>
+            <p style={localStyles.text}>
+                Reps:
+                <span style={localStyles.textEmphasis}>{` ${reps}`}</span>
+            </p>
         </section>
     );
 };
