@@ -11,7 +11,12 @@ import state from '../constants/state';
 import styles from '../constants/styles';
 
 const { colors } = styles;
-const { sound } = state;
+const {
+    sound,
+    restSeconds,
+    activitySeconds,
+    maxReps,
+} = state;
 const { boxingBell, blowWhistle } = audio;
 
 const CountdownModal = ( {
@@ -65,11 +70,13 @@ const CountdownModal = ( {
 export default ( { containerStyles } ) => {
     const [seconds, setSeconds] = useState( 20 );
     const [totalSeconds, setTotalSeconds] = useState( 0 );
-    const [reps, setReps] = useState( 0 );
+    const [reps, setReps] = useState( 7 );
+    const [repsLimit] = useRecoilState( maxReps );
     const [secsInterval, setSecsInterval] = useState( null );
     const [cooldown, setCooldown] = useState( false );
     const [soundOn] = useRecoilState( sound );
     const [modal, setModal] = useState( false );
+    const [complete, setComplete] = useState( false );
 
     const bell = new Audio( boxingBell );
     const whistle = new Audio( blowWhistle );
@@ -134,15 +141,26 @@ export default ( { containerStyles } ) => {
         setModal( false );
         initActivityInteral();
     };
+    const handleFinishedExercise = () => {
+        clearInterval( secsInterval );
+        setSecsInterval( null );
+        setComplete( true );
+        setSeconds( 0 );
+        setTotalSeconds( 0 );
+    };
 
     useEffect( () => {
         if ( seconds < 1 ) {
             if ( cooldown ) {
                 stopCooldownInterval();
             } else {
-                stopActivityInterval();
+                if ( reps >= ( repsLimit - 1 ) ) {
+                    return handleFinishedExercise();
+                }
+                return stopActivityInterval();
             }
         }
+        return null;
     }, [seconds] );
 
     const localStyles = {
@@ -152,6 +170,12 @@ export default ( { containerStyles } ) => {
             ...containerStyles,
         },
     };
+
+    if ( complete ) {
+        return (
+            <h1>Complete</h1>
+        );
+    }
 
     return (
         <main style={localStyles.container}>
