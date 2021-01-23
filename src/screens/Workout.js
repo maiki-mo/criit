@@ -14,7 +14,11 @@ const { colors } = styles;
 const { sound } = state;
 const { boxingBell, blowWhistle } = audio;
 
-const CountdownModal = ( { containerStyles, onFinish, colors } ) => {
+const CountdownModal = ( {
+    containerStyles,
+    onFinish,
+    colors,
+} ) => {
     const [seconds, setSeconds] = useState( 3 );
 
     useEffect( () => {
@@ -23,7 +27,7 @@ const CountdownModal = ( { containerStyles, onFinish, colors } ) => {
     }, [] );
 
     useEffect( () => {
-        if ( seconds === -1 ) {
+        if ( seconds === 0 ) {
             onFinish();
         }
     }, [seconds] );
@@ -36,8 +40,6 @@ const CountdownModal = ( { containerStyles, onFinish, colors } ) => {
         textColor = 'orange';
     } else if ( seconds === 1 ) {
         textColor = 'red';
-    } else if ( seconds === 0 ) {
-        textColor = colors.white;
     }
 
     const localStyles = {
@@ -67,23 +69,16 @@ export default ( { containerStyles } ) => {
     const [secsInterval, setSecsInterval] = useState( null );
     const [cooldown, setCooldown] = useState( false );
     const [soundOn] = useRecoilState( sound );
-    const [modal, setModal] = useState( true );
-    // const [startCountdown, setStartCountdown] = useState( true );
+    const [modal, setModal] = useState( false );
 
     const bell = new Audio( boxingBell );
     const whistle = new Audio( blowWhistle );
 
     const setCooldownInterval = () => setInterval( () => setSeconds( ( seconds ) => seconds - 1 ), 1000 );
-
     const setSecondsInterval = () => setInterval( () => {
         setTotalSeconds( ( seconds ) => seconds + 1 );
         return setSeconds( ( seconds ) => seconds - 1 );
     }, 1000 );
-
-    // const handleStartCountdown = () => {
-    //     setSeconds( 3 );
-    //     setSecondsInterval();
-    // };
 
     const handlePlayClick = () => {
         if ( secsInterval ) {
@@ -91,12 +86,7 @@ export default ( { containerStyles } ) => {
             setSecsInterval( null );
             return;
         }
-        const interval = setSecondsInterval();
-        setSecsInterval( interval );
-        if ( soundOn ) {
-            whistle.play();
-        }
-        window.navigator.vibrate( 200 );
+        setModal( true );
     };
     const handleStopClick = () => {
         clearInterval( secsInterval );
@@ -104,11 +94,12 @@ export default ( { containerStyles } ) => {
         setSeconds( 20 );
     };
     const handleResetClick = () => {
+        clearInterval( secsInterval );
+        setSecsInterval( null );
         setReps( 0 );
         setSeconds( 20 );
         setTotalSeconds( 0 );
         setCooldown( false );
-        setSecsInterval( null );
     };
     const initCooldownInterval = () => {
         setCooldown( true );
@@ -124,7 +115,6 @@ export default ( { containerStyles } ) => {
         if ( soundOn ) {
             whistle.play();
         }
-        window.navigator.vibrate( 200 );
     };
     const stopCooldownInterval = () => {
         setCooldown( false );
@@ -139,11 +129,10 @@ export default ( { containerStyles } ) => {
         if ( soundOn ) {
             bell.play();
         }
-        window.navigator.vibrate( 200 );
     };
     const handleModalClose = () => {
         setModal( false );
-        handlePlayClick();
+        initActivityInteral();
     };
 
     useEffect( () => {
@@ -180,7 +169,10 @@ export default ( { containerStyles } ) => {
                 onStopClick={handleStopClick}
             />
             <Modal display={modal}>
-                <CountdownModal colors={colors} onFinish={handleModalClose} />
+                <CountdownModal
+                    colors={colors}
+                    onFinish={handleModalClose}
+                />
             </Modal>
         </main>
     );
