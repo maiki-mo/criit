@@ -13,7 +13,7 @@ import styles from '../constants/styles';
 const { colors } = styles;
 const {
     sound,
-    restSeconds,
+    cooldownSeconds,
     activitySeconds,
     maxReps,
 } = state;
@@ -68,7 +68,9 @@ const CountdownModal = ( {
 };
 
 export default ( { containerStyles } ) => {
-    const [seconds, setSeconds] = useState( 20 );
+    const [initActivitySeconds] = useRecoilState( activitySeconds );
+    const [initCooldownSeconds] = useRecoilState( cooldownSeconds );
+    const [seconds, setSeconds] = useState( initActivitySeconds );
     const [totalSeconds, setTotalSeconds] = useState( 0 );
     const [reps, setReps] = useState( 7 );
     const [repsLimit] = useRecoilState( maxReps );
@@ -98,25 +100,25 @@ export default ( { containerStyles } ) => {
     const handleStopClick = () => {
         clearInterval( secsInterval );
         setSecsInterval( null );
-        setSeconds( 20 );
+        setSeconds( initActivitySeconds );
     };
     const handleResetClick = () => {
         clearInterval( secsInterval );
         setSecsInterval( null );
         setReps( 0 );
-        setSeconds( 20 );
+        setSeconds( initActivitySeconds );
         setTotalSeconds( 0 );
         setCooldown( false );
     };
     const initCooldownInterval = () => {
         setCooldown( true );
-        setSeconds( 10 );
+        setSeconds( initCooldownSeconds );
         clearInterval( secsInterval );
         const interval = setCooldownInterval();
         setSecsInterval( interval );
     };
     const initActivityInteral = () => {
-        setSeconds( 20 );
+        setSeconds( initActivitySeconds );
         const interval = setSecondsInterval();
         setSecsInterval( interval );
         if ( soundOn ) {
@@ -147,6 +149,9 @@ export default ( { containerStyles } ) => {
         setComplete( true );
         setSeconds( 0 );
         setTotalSeconds( 0 );
+        if ( soundOn ) {
+            bell.play();
+        }
     };
 
     useEffect( () => {

@@ -20,8 +20,8 @@ export default {
         key: 'activity seconds',
         default: 20,
     } ),
-    restSeconds: atom( {
-        key: 'rest seconds',
+    cooldownSeconds: atom( {
+        key: 'cooldown seconds',
         default: 10,
     } ),
 };
