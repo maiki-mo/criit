@@ -31,6 +31,8 @@ export default () => {
             ...styles.font.overpass,
             height: '100vh',
             width: '100vw',
+            maxWidth: 650,
+            margin: '0 auto',
             backgroundColor: '#123652',
         },
     };

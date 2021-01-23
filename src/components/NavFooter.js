@@ -19,11 +19,12 @@ export default ( { containerStyles } ) => {
             justifyContent: 'space-around',
             position: 'absolute',
             bottom: 0,
-            left: 0,
             width: '100vw',
             height: '10%',
             backgroundColor: '#A7B7C3',
             zIndex: 100,
+            margin: '0 auto',
+            maxWidth: 650,
             ...containerStyles,
         },
     };

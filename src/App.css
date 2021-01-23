@@ -6,3 +6,7 @@ button:focus {
 .ReactModal__Overlay--after-open {
   z-index: 200;
 }
+
+#root {
+  background-color: lightgrey;
+}
