@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useRecoilState } from 'recoil';
+import AdSense from 'react-adsense';
 
 import ActivityHeader from '../components/ActivityHeader';
 import Counter from '../components/Counter';
@@ -18,6 +19,29 @@ const {
     maxReps,
 } = state;
 const { boxingBell, blowWhistle } = audio;
+
+const CompleteAd = ( {
+    containerStyles,
+} ) => {
+    const localStyles = {
+        container: {
+            ...containerStyles,
+        },
+    };
+
+    return (
+        <div style={localStyles.container}>
+            <Modal display>
+                <AdSense.Google
+                    client="ca-pub-1193443239031928"
+                    slot="7806394673"
+                    responsive="true"
+                    format="auto"
+                />
+            </Modal>
+        </div>
+    );
+};
 
 const CountdownModal = ( {
     containerStyles,
@@ -72,13 +96,13 @@ export default ( { containerStyles } ) => {
     const [initCooldownSeconds] = useRecoilState( cooldownSeconds );
     const [seconds, setSeconds] = useState( initActivitySeconds );
     const [totalSeconds, setTotalSeconds] = useState( 0 );
-    const [reps, setReps] = useState( 0 );
+    const [reps, setReps] = useState( 7 );
     const [repsLimit] = useRecoilState( maxReps );
     const [secsInterval, setSecsInterval] = useState( null );
     const [cooldown, setCooldown] = useState( false );
     const [soundOn] = useRecoilState( sound );
     const [modal, setModal] = useState( false );
-    const [complete, setComplete] = useState( false );
+    const [complete, setComplete] = useState( true );
 
     const bell = new Audio( boxingBell );
     const whistle = new Audio( blowWhistle );
@@ -178,7 +202,9 @@ export default ( { containerStyles } ) => {
 
     if ( complete ) {
         return (
-            <h1>Complete</h1>
+            <main style={localStyles.container}>
+                <CompleteAd />
+            </main>
         );
     }
 

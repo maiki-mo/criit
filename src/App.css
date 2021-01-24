@@ -4,7 +4,14 @@ button:focus {
 }
 
 .ReactModal__Overlay--after-open {
+  max-width: 650px;
+  margin: 0 auto;
   z-index: 200;
+}
+
+.ReactModal__Overlay {
+  max-width: 650px;
+  margin: 0 auto;
 }
 
 #root {
