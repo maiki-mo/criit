@@ -28,13 +28,13 @@ export default ( { containerStyles } ) => {
     const [initCooldownSeconds] = useRecoilState( cooldownSeconds );
     const [seconds, setSeconds] = useState( initActivitySeconds );
     const [totalSeconds, setTotalSeconds] = useState( 0 );
-    const [reps, setReps] = useState( 7 );
+    const [reps, setReps] = useState( 0 );
     const [repsLimit] = useRecoilState( maxReps );
     const [secsInterval, setSecsInterval] = useState( null );
     const [cooldown, setCooldown] = useState( false );
     const [soundOn] = useRecoilState( sound );
     const [countdownModal, setCountdownModal] = useState( false );
-    const [completeModal, setCompleteModal] = useState( true );
+    const [completeModal, setCompleteModal] = useState( false );
 
     const bell = new Audio( boxingBell );
     const whistle = new Audio( blowWhistle );
