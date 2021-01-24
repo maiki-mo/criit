@@ -1,16 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import { useRecoilState } from 'recoil';
-import AdSense from 'react-adsense';
 
 import ActivityHeader from '../components/ActivityHeader';
 import Counter from '../components/Counter';
 import Controls from '../components/Controls';
 import Modal from '../components/Modal';
+import AdModal from '../components/AdModal';
+import CountdownModal from '../components/CountdownModal';
 
 import audio from '../constants/audio';
 import state from '../constants/state';
 import styles from '../constants/styles';
+import images from '../constants/images';
 
+const { closeIcon } = images;
 const { colors } = styles;
 const {
     sound,
@@ -19,77 +22,6 @@ const {
     maxReps,
 } = state;
 const { boxingBell, blowWhistle } = audio;
-
-const CompleteAd = ( {
-    containerStyles,
-} ) => {
-    const localStyles = {
-        container: {
-            ...containerStyles,
-        },
-    };
-
-    return (
-        <div style={localStyles.container}>
-            <Modal display>
-                <AdSense.Google
-                    client="ca-pub-1193443239031928"
-                    slot="7806394673"
-                    responsive="true"
-                    format="auto"
-                />
-            </Modal>
-        </div>
-    );
-};
-
-const CountdownModal = ( {
-    containerStyles,
-    onFinish,
-    colors,
-} ) => {
-    const [seconds, setSeconds] = useState( 3 );
-
-    useEffect( () => {
-        const setSecondsInterval = () => setInterval( () => setSeconds( ( seconds ) => seconds - 1 ), 1000 );
-        setSecondsInterval();
-    }, [] );
-
-    useEffect( () => {
-        if ( seconds === 0 ) {
-            onFinish();
-        }
-    }, [seconds] );
-
-    let textColor = colors.lightBlue;
-
-    if ( seconds === 3 ) {
-        textColor = 'green';
-    } else if ( seconds === 2 ) {
-        textColor = 'orange';
-    } else if ( seconds === 1 ) {
-        textColor = 'red';
-    }
-
-    const localStyles = {
-        container: {
-            ...containerStyles,
-        },
-        text: {
-            fontWeight: 300,
-            fontSize: 180,
-            color: textColor,
-        },
-    };
-
-    return (
-        <div style={localStyles.container}>
-            <h1 style={localStyles.text}>
-                {seconds}
-            </h1>
-        </div>
-    );
-};
 
 export default ( { containerStyles } ) => {
     const [initActivitySeconds] = useRecoilState( activitySeconds );
@@ -101,8 +33,8 @@ export default ( { containerStyles } ) => {
     const [secsInterval, setSecsInterval] = useState( null );
     const [cooldown, setCooldown] = useState( false );
     const [soundOn] = useRecoilState( sound );
-    const [modal, setModal] = useState( false );
-    const [complete, setComplete] = useState( true );
+    const [countdownModal, setCountdownModal] = useState( false );
+    const [completeModal, setCompleteModal] = useState( true );
 
     const bell = new Audio( boxingBell );
     const whistle = new Audio( blowWhistle );
@@ -119,7 +51,7 @@ export default ( { containerStyles } ) => {
             setSecsInterval( null );
             return;
         }
-        setModal( true );
+        setCountdownModal( true );
     };
     const handleStopClick = () => {
         clearInterval( secsInterval );
@@ -164,18 +96,23 @@ export default ( { containerStyles } ) => {
         }
     };
     const handleModalClose = () => {
-        setModal( false );
+        setCountdownModal( false );
         initActivityInteral();
     };
     const handleFinishedExercise = () => {
         clearInterval( secsInterval );
         setSecsInterval( null );
-        setComplete( true );
+        setCompleteModal( true );
         setSeconds( 0 );
-        setTotalSeconds( 0 );
         if ( soundOn ) {
             bell.play();
         }
+    };
+    const handleAdModalClose = () => {
+        // save workout potentially to local storage
+        // reset workout screen
+        handleResetClick();
+        setCompleteModal( false );
     };
 
     useEffect( () => {
@@ -200,14 +137,6 @@ export default ( { containerStyles } ) => {
         },
     };
 
-    if ( complete ) {
-        return (
-            <main style={localStyles.container}>
-                <CompleteAd />
-            </main>
-        );
-    }
-
     return (
         <main style={localStyles.container}>
             <ActivityHeader
@@ -223,10 +152,17 @@ export default ( { containerStyles } ) => {
                 onResetClick={handleResetClick}
                 onStopClick={handleStopClick}
             />
-            <Modal display={modal}>
+            <Modal display={countdownModal}>
                 <CountdownModal
                     colors={colors}
                     onFinish={handleModalClose}
+                />
+            </Modal>
+            <Modal display={completeModal}>
+                <AdModal
+                    closeIcon={closeIcon}
+                    onIconClick={handleAdModalClose}
+                    colors={colors}
                 />
             </Modal>
         </main>

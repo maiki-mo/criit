@@ -11,6 +11,7 @@ import workoutIconGrey from '../assets/images/workout-icon-grey.svg';
 import settingsIcon from '../assets/images/settings-icon.svg';
 import settingsIconWhite from '../assets/images/settings-icon-white.svg';
 import settingsIconGrey from '../assets/images/settings-icon-grey.svg';
+import closeIcon from '../assets/images/close-icon.svg';
 
 export default {
     playButton,
@@ -26,4 +27,5 @@ export default {
     settingsIcon,
     settingsIconWhite,
     settingsIconGrey,
+    closeIcon,
 };
