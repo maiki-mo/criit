@@ -55,9 +55,9 @@ export default ( {
                 alt="close"
                 src={closeIcon}
             />
-            <div style={localStyles.adContainer}>
+            {/* <div style={localStyles.adContainer}>
                 <p>Potential Ad</p>
-            </div>
+            </div> */}
             {/* <AdSense.Google
                 client="ca-pub-1193443239031928"
                 slot="7806394673"

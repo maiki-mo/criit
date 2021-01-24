@@ -40,8 +40,6 @@ export default ( {
                     },
                     content: {
                         borderRadius: 0,
-                        marginTop: '25%',
-                        marginBottom: '25%',
                         backgroundColor: colors.blue,
                         border: `1px solid ${colors.white}`,
                         color: colors.lightBlue,
