@@ -12,6 +12,7 @@ import audio from '../constants/audio';
 import state from '../constants/state';
 import styles from '../constants/styles';
 import images from '../constants/images';
+import services from '../services';
 
 const { closeIcon } = images;
 const { colors } = styles;
@@ -22,6 +23,7 @@ const {
     maxReps,
 } = state;
 const { boxingBell, blowWhistle } = audio;
+const { setCompletedWorkouts } = services;
 
 export default ( { containerStyles } ) => {
     const [initActivitySeconds] = useRecoilState( activitySeconds );
@@ -100,6 +102,15 @@ export default ( { containerStyles } ) => {
         initActivityInteral();
     };
     const handleFinishedExercise = () => {
+        setCompletedWorkouts( {
+            value: JSON.stringify( {
+                totalSeconds,
+                date: new Date().toUTCString(),
+                reps: reps + 1,
+                activitySeconds: initActivitySeconds,
+                cooldownSeconds: initCooldownSeconds,
+            } )
+        } );
         clearInterval( secsInterval );
         setSecsInterval( null );
         setCompleteModal( true );

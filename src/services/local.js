@@ -1,5 +1,6 @@
 const ALL_SOUND_STORE = 'all_sound';
 const WAKE_LOCK = 'wake_lock';
+const COMPLETED_WORKOUTS = 'completed_workouts';
 
 const setVarInStorage = ( { key, value } ) => {
     window.localStorage[key] = value;
@@ -25,6 +26,7 @@ const clearStorage = () => {
 export default {
     ALL_SOUND_STORE,
     WAKE_LOCK,
+    COMPLETED_WORKOUTS,
     setVarInStorage,
     clearStorage,
     getVarInStorage,

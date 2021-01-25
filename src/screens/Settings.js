@@ -97,6 +97,8 @@ export default ( { containerStyles } ) => {
             ...flex.centerFlexCol,
             paddingLeft: 30,
             paddingRight: 30,
+            height: '100%',
+            justifyContent: 'flex-start',
             ...containerStyles,
         },
     };
@@ -112,7 +114,7 @@ export default ( { containerStyles } ) => {
     };
 
     return (
-        <div style={localStyles.container}>
+        <main style={localStyles.container}>
             <ScreenHeader
                 title="Settings"
                 titleColor={colors.lightBlue}
@@ -138,6 +140,6 @@ export default ( { containerStyles } ) => {
                 onSwitch={handleSoundSwitch}
                 textColor={colors.lightBlue}
             />
-        </div>
+        </main>
     );
 };

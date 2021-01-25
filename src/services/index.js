@@ -36,9 +36,24 @@ const setWakeLockOption = ( { value } ) => {
     } );
 };
 
+const getCompletedWorkouts = () => {
+    const storage = __getStorage();
+    return storage.getVarInStorage( { key: storage.COMPLETED_WORKOUTS } );
+};
+
+const setCompletedWorkouts = ( { value } ) => {
+    const storage = __getStorage();
+    return storage.setVarInStorage( {
+        key: storage.COMPLETED_WORKOUTS,
+        value,
+    } );
+};
+
 export default {
     getSoundOption,
     setSoundOption,
     getWakeLockOption,
     setWakeLockOption,
+    getCompletedWorkouts,
+    setCompletedWorkouts,
 };

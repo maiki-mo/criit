@@ -24,4 +24,8 @@ export default {
         key: 'cooldown seconds',
         default: 10,
     } ),
+    completedWorkouts: atom( {
+        key: 'completed workouts',
+        default: services.getCompletedWorkouts() || [],
+    } ),
 };
