@@ -1,37 +1,33 @@
 import React from 'react';
-import Slider, { SliderTooltip, Handle } from 'rc-slider';
+import Slider, { Range } from 'rc-slider';
 
+import 'rc-slider/assets/index.css';
 import styles from '../constants/styles';
 
 const { flex } = styles;
 
+const DEFAULT_MARKS = {
+    0: 0,
+    10: 10,
+    20: 20,
+    30: 30,
+    40: 40,
+    50: 50,
+    60: 60,
+};
+
 export default ( {
     containerStyles,
-    checked,
-    onSwitch,
-    onColor,
-    offColor,
-    onHandleColor,
     text,
     textColor,
-    offHandleColor,
+    colors,
+    marks,
+    step,
+    max,
+    min,
+    defaultValue,
 } ) => {
-
-    const handle = props => {
-        const { value, dragging, index, ...restProps } = props;
-        return (
-            <SliderTooltip
-                prefixCls="rc-slider-tooltip"
-                overlay={`${value} %`}
-                visible={dragging}
-                placement="top"
-                key={index}
-            >
-                <Handle value={value} {...restProps} />
-            </SliderTooltip>
-        );
-    };
-
+    const handleSliderChange = ( value ) => console.log( value );
     const localStyles = {
         container: {
             width: '100%',
@@ -41,8 +37,8 @@ export default ( {
             textAlign: 'left',
             ...flex.centerFlexRow,
             justifyContent: 'space-between',
-            paddingTop: 20,
-            paddingBottom: 20,
+            paddingTop: 40,
+            paddingBottom: 40,
             borderBottom: `1px solid ${textColor}`,
             ...containerStyles,
         },
@@ -56,22 +52,21 @@ export default ( {
     return (
         <div style={localStyles.container}>
             <span style={localStyles.text}>{text}</span>
-            <div style={{ width: 200 }}>
-                <Slider min={20} defaultValue={20} marks={{ 20: 20, 40: 40, 100: 100 }} step={null} />
+            <div style={{ width: '50%', paddingRight: '2%' }}>
+                <Slider
+                    dots
+                    min={min || 0}
+                    max={max || 60}
+                    step={step || 10}
+                    defaultValue={defaultValue}
+                    marks={marks || DEFAULT_MARKS}
+                    onAfterChange={handleSliderChange}
+                    trackStyle={[{ backgroundColor: colors.lightBlue }, { backgroundColor: 'green' }]}
+                    handleStyle={[{ backgroundColor: colors.blue }, { backgroundColor: colors.white }]}
+                    railStyle={{ backgroundColor: colors.white }}
+                    dotStyle={{ backgroundColor: colors.blue, borderColor: colors.lightBlue }}
+                />
             </div>
-            {/* <Switch
-                handleDiameter={20}
-                offColor={offColor}
-                onHandleColor={onHandleColor}
-                offHandleColor={offHandleColor}
-                uncheckedIcon={false}
-                checkedIcon={false}
-                onColor={onColor}
-                checked={checked}
-                onChange={onSwitch}
-                height={30}
-                width={60}
-            /> */}
         </div>
     );
 };

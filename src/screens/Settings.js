@@ -89,6 +89,7 @@ export default ( { containerStyles } ) => {
                     <h1 style={localStyles.subText}>Workout</h1>
                 </div>
                 <SliderItem
+                    colors={colors}
                     onHandleColor={colors.blue}
                     offHandleColor={colors.grey}
                     text="Activity Time"
@@ -99,6 +100,7 @@ export default ( { containerStyles } ) => {
                     textColor={colors.lightBlue}
                 />
                 <SliderItem
+                    colors={colors}
                     onHandleColor={colors.blue}
                     offHandleColor={colors.grey}
                     text="Cooldown"
