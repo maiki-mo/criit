@@ -7,6 +7,7 @@ import Controls from '../components/Controls';
 import Modal from '../components/Modal';
 import AdModal from '../components/AdModal';
 import CountdownModal from '../components/CountdownModal';
+import ScreenHeader from '../components/ScreenHeader';
 
 import audio from '../constants/audio';
 import state from '../constants/state';
@@ -150,6 +151,13 @@ export default ( { containerStyles } ) => {
 
     return (
         <main style={localStyles.container}>
+            <ScreenHeader
+                title="Settings"
+                titleColor={colors.white}
+                titleSize={18}
+                backgroundColor={colors.lightBlue}
+                textSyles={{ margin: 0 }}
+            />
             <ActivityHeader
                 reps={reps}
                 totalSeconds={totalSeconds}

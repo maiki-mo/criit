@@ -5,6 +5,7 @@ export default ( {
     titleColor,
     titleSize,
     backgroundColor,
+    textSyles,
     containerStyles,
 } ) => {
     const localStyles = {
@@ -19,6 +20,7 @@ export default ( {
             textAlign: 'left',
             color: titleColor,
             fontSize: titleSize,
+            ...textSyles,
         },
     };
 
