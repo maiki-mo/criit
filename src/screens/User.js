@@ -44,6 +44,7 @@ export default ( { containerStyles } ) => {
                 title="User"
                 titleColor={colors.white}
                 titleSize={18}
+                backgroundColor={colors.lightBlue}
             />
             <section style={localStyles.subContainer}>
                 <div style={localStyles.subHeader}>
