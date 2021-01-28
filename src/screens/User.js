@@ -32,6 +32,7 @@ export default ( { containerStyles } ) => {
             justifyContent: 'space-between',
         },
         subText: {
+            color: colors.white,
             fontSize: 20,
             margin: 0,
         },
@@ -41,7 +42,7 @@ export default ( { containerStyles } ) => {
         <main style={localStyles.container}>
             <ScreenHeader
                 title="User"
-                titleColor={colors.lightBlue}
+                titleColor={colors.white}
                 titleSize={18}
             />
             <section style={localStyles.subContainer}>

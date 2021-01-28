@@ -41,7 +41,7 @@ export default ( {
         <div style={localStyles.container}>
             <span style={localStyles.text}>{text}</span>
             <Switch
-                handleDiameter={20}
+                handleDiameter={16}
                 offColor={offColor}
                 onHandleColor={onHandleColor}
                 offHandleColor={offHandleColor}
@@ -50,7 +50,7 @@ export default ( {
                 onColor={onColor}
                 checked={checked}
                 onChange={onSwitch}
-                height={30}
+                height={20}
                 width={60}
             />
         </div>
