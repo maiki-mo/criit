@@ -28,7 +28,7 @@ export default ( { containerStyles } ) => {
         },
         sectionContainer: {
             width: '100%',
-            paddingBottom: '15%',
+            paddingBottom: '10%',
         },
         subHeader: {
             paddingBottom: '3%',
@@ -51,6 +51,14 @@ export default ( { containerStyles } ) => {
     const handleSoundSwitch = () => {
         setSoundOption( { value: !soundOn } );
         setSound( !soundOn );
+    };
+
+    const handleActivityTimeSlide = ( { value } ) => {
+        console.log( value );
+    };
+
+    const handleCooldownTimeSlide = ( { value } ) => {
+        console.log( value );
     };
 
     return (
@@ -90,28 +98,18 @@ export default ( { containerStyles } ) => {
                 <div style={localStyles.subHeader}>
                     <h1 style={localStyles.subText}>Workout</h1>
                 </div>
-                <SliderItem
+                {/* <SliderItem
                     colors={colors}
-                    onHandleColor={colors.blue}
-                    offHandleColor={colors.grey}
                     text="Activity Time"
-                    onColor={colors.lightBlue}
-                    offColor={colors.lightBlue}
-                    checked={wakeLocked}
-                    onSwitch={handleStayWakeSwitch}
+                    onSlide={handleActivityTimeSlide}
                     textColor={colors.lightBlue}
                 />
                 <SliderItem
                     colors={colors}
-                    onHandleColor={colors.blue}
-                    offHandleColor={colors.grey}
                     text="Cooldown"
-                    onColor={colors.lightBlue}
-                    offColor={colors.lightBlue}
-                    checked={soundOn}
-                    onSwitch={handleSoundSwitch}
+                    onSlide={handleCooldownTimeSlide}
                     textColor={colors.lightBlue}
-                />
+                /> */}
             </section>
         </main>
     );

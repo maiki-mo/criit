@@ -155,7 +155,7 @@ export default ( { containerStyles } ) => {
     return (
         <main style={localStyles.container}>
             <ScreenHeader
-                title="Settings"
+                title="Workout"
                 titleColor={colors.white}
                 titleSize={18}
                 backgroundColor={colors.lightBlue}

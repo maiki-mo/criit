@@ -26,8 +26,9 @@ export default ( {
     max,
     min,
     defaultValue,
+    onSlide,
 } ) => {
-    const handleSliderChange = ( value ) => console.log( value );
+    const handleSliderChange = ( value ) => onSlide( { value } );
     const localStyles = {
         container: {
             width: '100%',
