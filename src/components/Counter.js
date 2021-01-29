@@ -13,7 +13,7 @@ export default ( { containerStyles, seconds } ) => {
         container: {
             height: '35%',
             width: '100%',
-            paddingTop: '15%',
+            paddingTop: '5%',
             paddingBottom: '5%',
             ...containerStyles,
         },

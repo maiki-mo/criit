@@ -48,19 +48,12 @@ export default ( { containerStyles } ) => {
             />
             <section style={localStyles.subContainer}>
                 <div style={localStyles.subHeader}>
-                    <h1 style={localStyles.subText}>Finished Workouts</h1>
-                    <h1 style={localStyles.subText}>Workout</h1>
+                    <h1 style={localStyles.subText}>Completed Workouts</h1>
                 </div>
                 <div>
                     {JSON.stringify( pastWorkouts ) }
                 </div>
             </section>
-            {/* <section style={localStyles.subContainer}>
-                <div style={localStyles.subHeader}>
-                    <h1 style={localStyles.subText}>Finished Workouts</h1>
-                    <h1 style={localStyles.subText}>Workout</h1>
-                </div>
-            </section> */}
         </main>
     );
 };

@@ -52,7 +52,7 @@ export default ( {
     return (
         <div style={localStyles.container}>
             <span style={localStyles.text}>{text}</span>
-            <div style={{ width: '50%', paddingRight: '2%' }}>
+            <div style={{ width: '55%', paddingRight: '2%' }}>
                 <Slider
                     dots
                     min={min || 0}

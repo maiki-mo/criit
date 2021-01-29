@@ -16,15 +16,17 @@ export default ( {
             paddingRight: '5%',
             paddingLeft: '5%',
             height: '10%',
+            width: '100%',
             ...containerStyles,
         },
         text: {
             margin: 0,
             color: colors.lightBlue,
             fontWeight: 'bold',
-            fontSize: 20,
+            fontSize: 18,
         },
         textEmphasis: {
+            color: colors.white,
             fontSize: 24,
         },
     };
@@ -32,11 +34,11 @@ export default ( {
     return (
         <section style={localStyles.container}>
             <p style={localStyles.text}>
-                Total:
+                Total Seconds:
                 <span style={localStyles.textEmphasis}>{` ${totalSeconds}`}</span>
             </p>
             <p style={localStyles.text}>
-                Reps:
+                Total Reps:
                 <span style={localStyles.textEmphasis}>{` ${reps}`}</span>
             </p>
         </section>

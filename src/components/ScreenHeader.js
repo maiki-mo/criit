@@ -11,12 +11,13 @@ export default ( {
     const localStyles = {
         container: {
             width: '100vw',
-            paddingLeft: '10%',
             marginBottom: '5%',
             backgroundColor,
+            maxWidth: 650,
             ...containerStyles,
         },
         text: {
+            paddingLeft: '3%',
             textAlign: 'left',
             color: titleColor,
             fontSize: titleSize,

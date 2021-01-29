@@ -16,7 +16,7 @@ import images from '../constants/images';
 import services from '../services';
 
 const { closeIcon } = images;
-const { colors } = styles;
+const { colors, flex } = styles;
 const {
     sound,
     cooldownSeconds,
@@ -143,8 +143,11 @@ export default ( { containerStyles } ) => {
 
     const localStyles = {
         container: {
+            ...flex.centerFlexCol,
+            paddingLeft: 30,
+            paddingRight: 30,
             height: '100%',
-            width: '100%',
+            justifyContent: 'flex-start',
             ...containerStyles,
         },
     };
@@ -156,7 +159,6 @@ export default ( { containerStyles } ) => {
                 titleColor={colors.white}
                 titleSize={18}
                 backgroundColor={colors.lightBlue}
-                textSyles={{ margin: 0 }}
             />
             <ActivityHeader
                 reps={reps}
