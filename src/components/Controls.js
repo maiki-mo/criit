@@ -17,8 +17,8 @@ export default ( {
     const localStyles = {
         container: {
             ...flex.centerFlexRow,
-            justifyContent: 'space-around',
-            width: '100%',
+            justifyContent: 'space-between',
+            width: '115%',
             height: '30%',
         },
     };

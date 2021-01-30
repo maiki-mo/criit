@@ -7,21 +7,22 @@ import services from '../services';
 
 import ToggleSwitchItem from '../components/ToggleSwitchItem';
 import ScreenHeader from '../components/ScreenHeader';
-import SliderItem from '../components/SliderItem';
+// import SliderItem from '../components/SliderItem';
 
 const { colors, flex } = styles;
-const { wakeLock, sound } = state;
-const { setSoundOption, setWakeLockOption } = services;
+const { wakeLock, sound, vibration } = state;
+const { setSoundOption, setWakeLockOption, setVibrationOption } = services;
 
 export default ( { containerStyles } ) => {
     const [wakeLocked, setWakeLock] = useRecoilState( wakeLock );
     const [soundOn, setSound] = useRecoilState( sound );
+    const [vibrationOn, setVibration] = useRecoilState( vibration );
 
     const localStyles = {
         container: {
             ...flex.centerFlexCol,
-            paddingLeft: 30,
-            paddingRight: 30,
+            paddingLeft: 20,
+            paddingRight: 20,
             height: '100%',
             justifyContent: 'flex-start',
             ...containerStyles,
@@ -53,13 +54,18 @@ export default ( { containerStyles } ) => {
         setSound( !soundOn );
     };
 
-    const handleActivityTimeSlide = ( { value } ) => {
-        console.log( value );
+    const handleVibrationSwitch = () => {
+        setVibrationOption( { value: !vibrationOn } );
+        setVibration( !vibrationOn );
     };
 
-    const handleCooldownTimeSlide = ( { value } ) => {
-        console.log( value );
-    };
+    // const handleActivityTimeSlide = ( { value } ) => {
+    //     console.log( value );
+    // };
+
+    // const handleCooldownTimeSlide = ( { value } ) => {
+    //     console.log( value );
+    // };
 
     return (
         <main style={localStyles.container}>
@@ -91,6 +97,16 @@ export default ( { containerStyles } ) => {
                     offColor={colors.lightBlue}
                     checked={soundOn}
                     onSwitch={handleSoundSwitch}
+                    textColor={colors.lightBlue}
+                />
+                <ToggleSwitchItem
+                    onHandleColor={colors.blue}
+                    offHandleColor={colors.grey}
+                    text="Vibration"
+                    onColor={colors.lightBlue}
+                    offColor={colors.lightBlue}
+                    checked={vibrationOn}
+                    onSwitch={handleVibrationSwitch}
                     textColor={colors.lightBlue}
                 />
             </section>

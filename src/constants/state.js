@@ -12,6 +12,10 @@ export default {
         key: 'sound',
         default: services.getSoundOption() || true,
     } ),
+    vibration: atom( {
+        key: 'vibration',
+        default: services.getVibrationOption() || true,
+    } ),
     maxReps: atom( {
         key: 'max reps',
         default: 8,

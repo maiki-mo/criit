@@ -15,7 +15,7 @@ export default ( {
             justifyContent: 'space-between',
             paddingRight: '5%',
             paddingLeft: '5%',
-            height: '10%',
+            height: '4%',
             width: '100%',
             ...containerStyles,
         },
@@ -34,12 +34,12 @@ export default ( {
     return (
         <section style={localStyles.container}>
             <p style={localStyles.text}>
-                Total Seconds:
-                <span style={localStyles.textEmphasis}>{` ${totalSeconds}`}</span>
+                <span style={localStyles.textEmphasis}>{`${totalSeconds}  `}</span>
+                Seconds
             </p>
             <p style={localStyles.text}>
-                Total Reps:
-                <span style={localStyles.textEmphasis}>{` ${reps}`}</span>
+                <span style={localStyles.textEmphasis}>{`${reps}  `}</span>
+                Reps
             </p>
         </section>
     );

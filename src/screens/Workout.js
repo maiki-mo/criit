@@ -144,13 +144,15 @@ export default ( { containerStyles } ) => {
     const localStyles = {
         container: {
             ...flex.centerFlexCol,
-            paddingLeft: 30,
-            paddingRight: 30,
+            paddingLeft: 20,
+            paddingRight: 20,
             height: '100%',
             justifyContent: 'flex-start',
             ...containerStyles,
         },
     };
+
+    const completePercentage = parseInt( ( ( initActivitySeconds - seconds ) / initActivitySeconds ) * 100, 10 );
 
     return (
         <main style={localStyles.container}>
@@ -166,6 +168,7 @@ export default ( { containerStyles } ) => {
             />
             <Counter
                 seconds={seconds}
+                completePercentage={completePercentage}
             />
             <Controls
                 playing={secsInterval}

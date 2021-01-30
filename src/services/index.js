@@ -10,20 +10,14 @@ const { storage } = config;
 
 const __getStorage = () => STORAGE_OPTIONS[storage];
 
-const getSoundOption = () => {
-    const storage = __getStorage();
-    return storage.getVarInStorage( { key: storage.ALL_SOUND_STORE } );
-};
+const getSoundOption = () => __getStorage().getVarInStorage( { key: storage.ALL_SOUND } );
 
-const getWakeLockOption = () => {
-    const storage = __getStorage();
-    return storage.getVarInStorage( { key: storage.WAKE_LOCK } );
-};
+const getWakeLockOption = () => __getStorage().getVarInStorage( { key: storage.WAKE_LOCK } );
 
 const setSoundOption = ( { value } ) => {
     const storage = __getStorage();
     return storage.setVarInStorage( {
-        key: storage.ALL_SOUND_STORE,
+        key: storage.ALL_SOUND,
         value,
     } );
 };
@@ -34,6 +28,19 @@ const setWakeLockOption = ( { value } ) => {
         key: storage.WAKE_LOCK,
         value,
     } );
+};
+
+const setVibrationOption = ( { value } ) => {
+    const storage = __getStorage();
+    return storage.setVarInStorage( {
+        key: storage.VIBRATION,
+        value,
+    } );
+};
+
+const getVibrationOption = () => {
+    const storage = __getStorage();
+    return storage.getVarInStorage( { key: storage.VIBRATION } );
 };
 
 const getCompletedWorkouts = () => {
@@ -56,4 +63,6 @@ export default {
     setWakeLockOption,
     getCompletedWorkouts,
     setCompletedWorkouts,
+    setVibrationOption,
+    getVibrationOption,
 };

@@ -10,7 +10,7 @@ const secondsToClockTime = ( { seconds } ) => {
 };
 
 const secondsToColor = ( { seconds, colors } ) => {
-    let color = colors.lightBlue;
+    let color = colors.white;
 
     if ( seconds === 3 ) {
         color = 'green';
@@ -19,13 +19,18 @@ const secondsToColor = ( { seconds, colors } ) => {
     } else if ( seconds === 1 ) {
         color = 'red';
     } else if ( seconds === 0 ) {
-        color = 'white';
+        color = colors.lightBlue;
     }
 
     return color;
 };
 
+const percentageToColor = ( { percentage, colors } ) => {
+    console.log( percentage, colors );
+};
+
 export default {
     secondsToClockTime,
     secondsToColor,
+    percentageToColor,
 };

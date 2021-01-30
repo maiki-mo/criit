@@ -1,6 +1,6 @@
 import React from 'react';
 
-import LineBreak from './LineBreak';
+import ProgressRing from './ProgressRing';
 
 import numberUtils from '../utils/numbers';
 import styles from '../constants/styles';
@@ -8,10 +8,14 @@ import styles from '../constants/styles';
 const { secondsToColor } = numberUtils;
 const { flex, colors } = styles;
 
-export default ( { containerStyles, seconds } ) => {
+export default ( {
+    containerStyles,
+    seconds,
+    completePercentage,
+} ) => {
     const localStyles = {
         container: {
-            height: '35%',
+            height: '45%',
             width: '100%',
             paddingTop: '5%',
             paddingBottom: '5%',
@@ -29,7 +33,7 @@ export default ( { containerStyles, seconds } ) => {
             ...flex.centerFlexRow,
             fontWeight: 500,
             fontSize: 200,
-            color: colors.lightBlue,
+            color: colors.white,
             paddingBottom: '10%',
         },
     };
@@ -40,21 +44,9 @@ export default ( { containerStyles, seconds } ) => {
         <section style={localStyles.container}>
             <p style={{ ...localStyles.seconds, color }}>{seconds || 0}</p>
             <div style={localStyles.breakContainer}>
-                <LineBreak
-                    width="85%"
-                    color={color}
-                />
-                <LineBreak
-                    width="55%"
-                    color={color}
-                />
-                <LineBreak
-                    width="35%"
-                    color={color}
-                />
-                <LineBreak
-                    width="15%"
-                    color={color}
+                <ProgressRing
+                    progress={completePercentage}
+                    stroke={8}
                 />
             </div>
         </section>

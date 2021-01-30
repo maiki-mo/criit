@@ -17,8 +17,8 @@ export default ( { containerStyles } ) => {
         container: {
             ...flex.centerFlexCol,
             ...containerStyles,
-            paddingLeft: 30,
-            paddingRight: 30,
+            paddingLeft: 20,
+            paddingRight: 20,
             height: '100%',
             justifyContent: 'flex-start',
             ...containerStyles,
