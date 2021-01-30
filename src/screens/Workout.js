@@ -152,7 +152,11 @@ export default ( { containerStyles } ) => {
         },
     };
 
-    const completePercentage = parseInt( ( ( initActivitySeconds - seconds ) / initActivitySeconds ) * 100, 10 );
+    let completePercentage = parseInt( ( ( initActivitySeconds - seconds ) / initActivitySeconds ) * 100, 10 );
+
+    if ( completePercentage < 1 ) {
+        completePercentage = null;
+    }
 
     return (
         <main style={localStyles.container}>

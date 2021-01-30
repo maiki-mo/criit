@@ -18,7 +18,7 @@ export default ( {
         container: {
             ...flex.centerFlexRow,
             justifyContent: 'space-between',
-            width: '115%',
+            width: '110%',
             height: '30%',
         },
     };

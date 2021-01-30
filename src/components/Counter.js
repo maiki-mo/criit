@@ -19,12 +19,14 @@ export default ( {
             width: '100%',
             paddingTop: '5%',
             paddingBottom: '5%',
+            position: 'relative',
+            ...flex.centerFlexCol,
             ...containerStyles,
         },
-        breakContainer: {
+        ringContainer: {
             ...flex.centerFlexCol,
+            position: 'absolute',
             justifyContent: 'space-around',
-            height: '25%',
             width: '100%',
         },
         seconds: {
@@ -43,10 +45,10 @@ export default ( {
     return (
         <section style={localStyles.container}>
             <p style={{ ...localStyles.seconds, color }}>{seconds || 0}</p>
-            <div style={localStyles.breakContainer}>
+            <div style={localStyles.ringContainer}>
                 <ProgressRing
                     progress={completePercentage}
-                    stroke={8}
+                    stroke={7}
                 />
             </div>
         </section>

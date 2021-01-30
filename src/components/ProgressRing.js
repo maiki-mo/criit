@@ -1,21 +1,16 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 
 import styles from '../constants/styles';
 
-const { flex } = styles;
+const { flex, colors } = styles;
 
 export default ( {
-    stroke = 4,
-    progress = 100,
+    stroke,
+    progress,
 } ) => {
-    useEffect( () => {
-
-    }, [] );
-
     const localStyles = {
         container: {
             ...flex.centerFlexCol,
-            width: '25%',
         },
         circle: {
             transition: 'stroke-dashoffset 0.35s',
@@ -24,10 +19,16 @@ export default ( {
         },
     };
 
-    const radius = parseInt( window.innerWidth / 2.6, 10 );
+    const radius = parseInt( window.innerWidth / 2.3, 10 );
     const normalizedRadius = radius - stroke * 2;
     const circumference = normalizedRadius * 2 * Math.PI;
-    const strokeDashoffset = circumference - ( progress / 100 ) * circumference;
+    let strokeDashoffset;
+
+    if ( progress ) {
+        strokeDashoffset = circumference - ( progress / 100 ) * circumference;
+    } else {
+        strokeDashoffset = circumference - ( 100 / 100 ) * circumference;
+    }
 
     return (
         <div style={localStyles.container}>
@@ -36,7 +37,7 @@ export default ( {
                 width={radius * 2}
             >
                 <circle
-                    stroke="red"
+                    stroke={progress ? colors.white : colors.darkGrey}
                     fill="transparent"
                     strokeWidth={stroke}
                     strokeDasharray={`${circumference} ${circumference}`}
