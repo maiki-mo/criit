@@ -17,7 +17,7 @@ export default ( {
         container: {
             height: '45%',
             width: '100%',
-            paddingTop: '5%',
+            paddingTop: '8%',
             paddingBottom: '5%',
             position: 'relative',
             ...flex.centerFlexCol,
