@@ -82,7 +82,7 @@ export default ( { containerStyles } ) => {
                 <ToggleSwitchItem
                     onHandleColor={colors.blue}
                     offHandleColor={colors.grey}
-                    text="Keep Screen Awake"
+                    text="Screen Lock"
                     onColor={colors.lightBlue}
                     offColor={colors.lightBlue}
                     checked={wakeLocked}

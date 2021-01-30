@@ -6,6 +6,9 @@ export default {
         black: '#000',
         darkGrey: '#464546',
         grey: '#808080',
+        green: '#468C77',
+        red: '#D46A6A',
+        orange: '#F5BC3D',
     },
     font: {
         overpass: {

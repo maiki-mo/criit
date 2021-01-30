@@ -1,12 +1,14 @@
 import React from 'react';
 
 import styles from '../constants/styles';
+import numberUtils from '../utils/numbers';
 
+const { percentageToColor } = numberUtils;
 const { flex, colors } = styles;
 
 export default ( {
     stroke,
-    progress,
+    percentage,
 } ) => {
     const localStyles = {
         container: {
@@ -22,7 +24,7 @@ export default ( {
     const normalizedRadius = radius - stroke * 2;
     const circumference = normalizedRadius * 2 * Math.PI;
 
-    if ( !progress ) {
+    if ( !percentage ) {
         const strokeDashoffset = circumference - ( 100 / 100 ) * circumference;
 
         return (
@@ -46,7 +48,7 @@ export default ( {
         );
     }
 
-    const strokeDashoffset = circumference - ( progress / 100 ) * circumference;
+    const strokeDashoffset = circumference - ( percentage / 100 ) * circumference;
 
     return (
         <div style={localStyles.container}>
@@ -55,7 +57,7 @@ export default ( {
                 width={radius * 2}
             >
                 <circle
-                    stroke={progress ? colors.white : colors.darkGrey}
+                    stroke={percentageToColor( { percentage, colors } )}
                     fill="transparent"
                     strokeWidth={stroke}
                     strokeDasharray={`${circumference} ${circumference}`}

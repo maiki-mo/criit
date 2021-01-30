@@ -1,5 +1,9 @@
 import React, { useState, useEffect } from 'react';
 
+import numberUtils from '../utils/numbers';
+
+const { secondsToColor } = numberUtils;
+
 export default ( {
     containerStyles,
     onFinish,
@@ -18,16 +22,6 @@ export default ( {
         }
     }, [seconds] );
 
-    let textColor = colors.lightBlue;
-
-    if ( seconds === 3 ) {
-        textColor = 'green';
-    } else if ( seconds === 2 ) {
-        textColor = 'orange';
-    } else if ( seconds === 1 ) {
-        textColor = 'red';
-    }
-
     const localStyles = {
         container: {
             ...containerStyles,
@@ -35,7 +29,7 @@ export default ( {
         text: {
             fontWeight: 300,
             fontSize: 200,
-            color: textColor,
+            color: secondsToColor( { seconds, colors } ),
         },
     };
 

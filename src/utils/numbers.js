@@ -13,11 +13,11 @@ const secondsToColor = ( { seconds, colors } ) => {
     let color = colors.white;
 
     if ( seconds === 3 ) {
-        color = 'green';
+        color = colors.red;
     } else if ( seconds === 2 ) {
-        color = 'orange';
+        color = colors.orange;
     } else if ( seconds === 1 ) {
-        color = 'red';
+        color = colors.green;
     } else if ( seconds === 0 ) {
         color = colors.lightBlue;
     }
@@ -26,7 +26,19 @@ const secondsToColor = ( { seconds, colors } ) => {
 };
 
 const percentageToColor = ( { percentage, colors } ) => {
-    console.log( percentage, colors );
+    let color = colors.white;
+
+    if ( percentage >= 85 && percentage <= 89 ) {
+        color = colors.red;
+    } else if ( percentage >= 90 && percentage <= 94 ) {
+        color = colors.orange;
+    } else if ( percentage >= 95 ) {
+        color = colors.green;
+    } else {
+        color = colors.white;
+    }
+
+    return color;
 };
 
 export default {
