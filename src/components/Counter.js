@@ -32,9 +32,10 @@ export default ( {
             margin: 0,
             ...flex.centerFlexRow,
             fontWeight: 500,
-            fontSize: 200,
+            fontSize: 180,
+            position: 'relative',
+            bottom: 8,
             color: colors.white,
-            paddingBottom: '10%',
         },
     };
 

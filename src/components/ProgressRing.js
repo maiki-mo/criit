@@ -20,7 +20,7 @@ export default ( {
         },
     };
 
-    const radius = 180;
+    const radius = 150;
     const normalizedRadius = radius - stroke * 2;
     const circumference = normalizedRadius * 2 * Math.PI;
 
