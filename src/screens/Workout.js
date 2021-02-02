@@ -152,7 +152,9 @@ export default ( { containerStyles } ) => {
         },
     };
 
-    let completePercentage = parseInt( ( ( initActivitySeconds - seconds ) / initActivitySeconds ) * 100, 10 );
+    let completePercentage = cooldown
+        ? parseInt( ( ( initCooldownSeconds - seconds ) / initCooldownSeconds ) * 100, 10 )
+        : parseInt( ( ( initActivitySeconds - seconds ) / initActivitySeconds ) * 100, 10 );
 
     if ( completePercentage < 1 ) {
         completePercentage = null;

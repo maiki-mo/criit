@@ -10,7 +10,7 @@ const secondsToClockTime = ( { seconds } ) => {
 };
 
 const secondsToColor = ( { seconds, colors } ) => {
-    let color = colors.white;
+    let color = colors.lightBlue;
 
     if ( seconds === 3 ) {
         color = colors.red;
@@ -19,7 +19,7 @@ const secondsToColor = ( { seconds, colors } ) => {
     } else if ( seconds === 1 ) {
         color = colors.green;
     } else if ( seconds === 0 ) {
-        color = colors.lightBlue;
+        color = colors.white;
     }
 
     return color;
