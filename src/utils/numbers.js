@@ -26,7 +26,7 @@ const secondsToColor = ( { seconds, colors } ) => {
 };
 
 const percentageToColor = ( { percentage, colors } ) => {
-    let color = colors.white;
+    let color = colors.lightBlue;
 
     if ( percentage >= 85 && percentage <= 89 ) {
         color = colors.red;
@@ -34,7 +34,7 @@ const percentageToColor = ( { percentage, colors } ) => {
         color = colors.orange;
     } else if ( percentage >= 95 ) {
         color = colors.green;
-    } else {
+    } else if ( percentage === 100 ) {
         color = colors.white;
     }
 
