@@ -15,10 +15,8 @@ export default ( {
 } ) => {
     const localStyles = {
         container: {
-            height: '45%',
+            height: '50%',
             width: '100%',
-            paddingTop: '8%',
-            paddingBottom: '5%',
             position: 'relative',
             ...flex.centerFlexCol,
             ...containerStyles,

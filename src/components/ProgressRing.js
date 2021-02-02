@@ -20,7 +20,7 @@ export default ( {
         },
     };
 
-    const radius = parseInt( window.innerWidth / 2.3, 10 );
+    const radius = 180;
     const normalizedRadius = radius - stroke * 2;
     const circumference = normalizedRadius * 2 * Math.PI;
 
