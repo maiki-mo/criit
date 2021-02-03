@@ -77,7 +77,9 @@ export default ( { containerStyles } ) => {
         setSecsInterval( interval );
     };
     const initActivityInteral = () => {
-        setSeconds( initActivitySeconds );
+        if ( seconds === 0 ) {
+            setSeconds( initActivitySeconds );
+        }
         const interval = setSecondsInterval();
         setSecsInterval( interval );
         if ( soundOn ) {

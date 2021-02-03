@@ -46,6 +46,7 @@ export default ( {
             <p style={{ ...localStyles.seconds, color }}>{seconds || 0}</p>
             <div style={localStyles.ringContainer}>
                 <ProgressRing
+                    seconds={seconds}
                     percentage={completePercentage}
                     stroke={7}
                 />

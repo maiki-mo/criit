@@ -3,12 +3,13 @@ import React from 'react';
 import styles from '../constants/styles';
 import numberUtils from '../utils/numbers';
 
-const { percentageToColor } = numberUtils;
+const { secondsToColor } = numberUtils;
 const { flex, colors } = styles;
 
 export default ( {
     stroke,
     percentage,
+    seconds,
 } ) => {
     const localStyles = {
         container: {
@@ -57,7 +58,7 @@ export default ( {
                 width={radius * 2}
             >
                 <circle
-                    stroke={percentageToColor( { percentage, colors } )}
+                    stroke={secondsToColor( { seconds, colors } )}
                     fill="transparent"
                     strokeWidth={stroke}
                     strokeDasharray={`${circumference} ${circumference}`}
